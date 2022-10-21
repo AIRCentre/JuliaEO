@@ -12,4 +12,10 @@ Repository (datasets, code, etc.), and landing page for the workshop. Contains t
 
 ## FAQ
 
+1. Is the a fee to attend the workshop?
+No.
+3. Do I need to register to attend the workshop?
+Yes. If you (your institution) received an invitation, please write to juliaeo@aircentre.org and request access to the form to register.
+
+5. 
 
