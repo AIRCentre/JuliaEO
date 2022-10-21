@@ -10,4 +10,6 @@ Repository (datasets, code, etc.), and landing page for the workshop. Contains t
 ## Speakers Bios'
 (inlcude photos as well, and links to their social media accounts and github pages)
 
-## 
+## FAQ
+
+
