@@ -1,5 +1,5 @@
 # JuliaEO - Earth Observation with Julia Workshop
-Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up to date program**.
+Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up-to-date-program**.
 
 The communication Slack channel ***juliaeo2023***  
 Channel ID: ***C0480TAQJ9Y***
