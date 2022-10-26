@@ -1,12 +1,14 @@
 # JuliaEO - Earth Observation with Julia Workshop
 Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up to date program**.
 
+The communication Slack channel ***juliaeo2023***  
+Channel ID: ***C0480TAQJ9Y***
+
 ![AIR Centre logo](https://media-exp1.licdn.com/dms/image/C560BAQGC6Zj6dvrkMw/company-logo_200_200/0/1539717992003?e=1674691200&v=beta&t=YG3ukkVvpG36SFte-HC9a2dXfnpNlWw9rAy5ilj0qSs)
 
 **Date**: 9-13 January 2023     
 **Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
-**Type**: In-person, full-week, technical and networking.
-
+**Type**: In-person, full-week, technical and networking.  
 **Accommodation**: Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. 
  
 
@@ -69,13 +71,13 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **13:15 – 14:00** Plenary session 2 Raster data manipulation: downloading, reading, and visualising *R. Schouten*
 
-**14:00 – 15:55** Hands-on session 2.1 Retrieving remote sensing indices & masking *M. Visser*
+**14:00 – 15:55** Hands-on session 2.1 Retrieving remote sensing indices and Masking *M. Visser*
 
 **14:00 – 15:55** Hands-on session 2.2 Classification of EO images *R. Schouten*
 
 **15:55 – 16:15** Coffee break
 
-**16:15 – 17:15** General hackathon: Performing Land Cover / Land Use Classification
+**16:15 – 17:15** General hackathon: Performing Land Cover/Land Use Classification
 
 **17:30** Shuttle (Terinov - Hotel)
 
@@ -147,7 +149,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **13:00 – 13:45** Plenary session 2.2 JuliaEarth applications *J. Hoffimann*
 
-**13:45 – 15:40** Hands-on session 2.1 Simulating oceanic pathways of plastics, pollutants, or marine ecosystems *G. Forget, S. Silvestri?*
+**13:45 – 15:40** Hands-on session 2.1 Simulating oceanic pathways of plastics, pollutants, or marine ecosystems *G. Forget*
 
 **13:45 – 15:40** Hands-on session 2.2 Estimation of water storage in medium and small reservoirs *M. Pronk*
 
@@ -186,13 +188,21 @@ The selection was based on the level of skill and commitment demonstrated, with 
 ### Júlio Hoffimann
 Dr. Júlio has more than 10 years of experience in advanced statistical theories for geosciences. He is creator and lead developer of the GeoStats.jl project, as well as various other open source projects that are widely used by geoscientists around the world: https://juliohm.github.io
 
-
 * LinkedIn: [link](https://www.linkedin.com/in/j%C3%BAlio-hoffimann-834936116)
 * Gitgub: [link](https://github.com/juliohm)
 * ORCID: [link](https://orcid.org/0000-0003-2789-297X)
 
+### Simon Kok Lupemba
 
-![Picture](https://p-c44557.f3.n0.cdn.getcloudapp.com/items/04uWz20P/976534ed-aa6a-410d-9d6c-efea3adb9aef.jpg?v=61c8e524be4f979a053a662ccc70e596) 
+Junior Remote Sensing Scientist at EUMETSAT working in the scatterometry team. I support the quality monitoring, calibration and validation of operational scatterometer products and also prototype and maintain processing software for the extraction of products.
+
+I am a MSc graduate in Earth and Space Physics and Engineering from DTU and I have hands-on experience working with SAR data from my studies. Most of my academic projects focused on processing SAR images e.g. speckle filtering, interferometric coherence and automated flood mapping. I have implemented InSAR coherence processing in Julia (programming language) without using commercial software or SAR related libraries.
+
+I have also worked as an IT-consultant at Netcompany for 2 years where I was involved with support, maintenance and development of medium-sized public IT projects. My regular tasks included; defining and estimating tasks, developing new features, fixing existing bugs and providing general support.
+
+* LinkedIn: [link](www.linkedin.com/in/simon-kok-lupemba)
+* Gitgub: [link](https://github.com/lupemba)
+
 
 ## Outcomes 
 * Capacity building of the AIR Centre and other institutions invited.
@@ -207,7 +217,7 @@ Dr. Júlio has more than 10 years of experience in advanced statistical theories
 ## FAQ
 
 1. Is the a fee to attend the workshop? *No.*
-3. Do I need to register to attend the workshop?     
+2. Do I need to register to attend the workshop?     
 *Yes. If you (your institution) received an invitation, please write to juliaeo@aircentre.org and request access to the form to register.*     
-5. Does the AIR Centre provide transfers from the airport to the hotel? *Yes, for the speakers.*
-
+3. Does the AIR Centre provide transfers from the airport to the hotel? *Yes but for the speakers only.*
+4. How to access the Slack channel? *Type juliaeo2023 in the Slack search bar.*
