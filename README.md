@@ -4,7 +4,8 @@ Repository (datasets, code, etc.), and landing page for the workshop. Contains t
 The communication Slack channel ***juliaeo2023***  
 Channel ID: ***C0480TAQJ9Y***
 
-![AIR Centre logo](https://media-exp1.licdn.com/dms/image/C560BAQGC6Zj6dvrkMw/company-logo_200_200/0/1539717992003?e=1674691200&v=beta&t=YG3ukkVvpG36SFte-HC9a2dXfnpNlWw9rAy5ilj0qSs)
+<p align="center">
+  <img src="/Users/igaszczesniak/Desktop/AIRcentre-01-scaled.jpg" height="200"><br>
 
 **Date**: 9-13 January 2023     
 **Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
