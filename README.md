@@ -5,7 +5,7 @@ The communication Slack channel ***juliaeo2023***
 Channel ID: ***C0480TAQJ9Y***
 
 <p align="center">
-  <img src="https://www.sciencecrunchers.com/wp-content/uploads/2021/02/AIRcentre.jpg" height="200"><br>
+  <img src="https://www.sciencecrunchers.com/wp-content/uploads/2021/02/AIRcentre-01-scaled.jpg" height="200"><br>
 
 **Date**: 9-13 January 2023     
 **Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
