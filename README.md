@@ -1,11 +1,12 @@
 # JuliaEO - Earth Observation with Julia Workshop
 Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up-to-date-program**.
 
-The communication Slack channel ***juliaeo2023***  
+The communication Slack channel
+[julialang.slack.com](http://julialang.slack.com/)  ***juliaeo2023***  
 Channel ID: ***C0480TAQJ9Y***
 
 <p align="center">
-  <img src="https://www.sciencecrunchers.com/wp-content/uploads/2021/02/AIRcentre-01-scaled.jpg" height="200"><br>
+  <img src="/Users/igaszczesniak/Desktop/juliaeo_logo.png" height="200"><br>
 
 **Date**: 9-13 January 2023     
 **Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
@@ -22,8 +23,6 @@ The following training workshop aims at providing quality computer programming s
 To simulate collaboration beyond the training, the workshop is presential (full week). However, for a wider reach, we aim to deliver several sessions online.
 
 The topics to be covered include acquisition, processing, visualisation, and classification of Earth Observation data, using the [Julia programming language](https://julialang.org/).
-
-
 
 The open-source Julia language is relatively recent. It was created at the [Massachusetts Institute of Technology (MIT)](https://www.mit.edu), first released in 2012, and reached the v1.0 milestone in 2018. Julia has a vocation for high-performance scientific computing, making it today's ideal choice to work on resource-intensive datasets such as the Earth Observation ones.
 
@@ -70,11 +69,11 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **12:15 – 13:15** Lunch break
 
-**13:15 – 14:00** Plenary session 2 Raster data manipulation: downloading, reading, and visualising *R. Schouten*
+**13:15 – 14:00** Plenary session 2 Raster data manipulation: Downloading, Reading, and Visualising *R. Schouten*
 
-**14:00 – 15:55** Hands-on session 2.1 Retrieving remote sensing indices and Masking *M. Visser*
+**14:00 – 15:55** Hands-on session 2.1 Retrieving Remote Sensing Indices & Masking (TBD) *M. Visser*
 
-**14:00 – 15:55** Hands-on session 2.2 Classification of EO images *R. Schouten*
+**14:00 – 15:55** Hands-on session 2.2 Land Cover Classification of Earth Observation images (TBD) *R. Schouten*
 
 **15:55 – 16:15** Coffee break
 
@@ -104,7 +103,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **13:45 – 15:40** Hands-on session 2.1 Julia Use Case for Change Detection *F. Cremer*
 
-**13:45 – 15:40** Hands-on session 2.2 InSAR Coherence estimation *E. Lippert*
+**13:45 – 15:40** Hands-on session 2.2 InSAR Coherence Estimation *E. Lippert*
 
 **15:40 – 16:00** Coffee break
 
@@ -172,7 +171,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **10:05 – 12:00** Hands-on session 1.1 Datacubes for high-resolution EO data *F. Cremer, F. Gans?*
 
-**10:05 – 12:00** Hands-on session 1.2 Retrieving Bio-Geophysical parameters from space *N. Wong?, A. Barth*
+**10:05 – 12:00** Hands-on session 1.2 Retrieving Bio-Geophysical parameters from space *N. Wong, A. Barth*
 
 **12:00 – 13:00** Lunch break
 
@@ -182,7 +181,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 
 ## Speakers Bios'
-The following 14 speakers have been selected from the Julia community to participate in this training event. The speakers involve a mix of seasoned and young/aspiring scientists.
+The following speakers have been selected from the Julia community to participate in this training event. The speakers involve a mix of seasoned and young/aspiring scientists.
 The selection was based on the level of skill and commitment demonstrated, with contributions to the EO software packages which are most needed for AIR Centre's current work and future development.
 
 
@@ -204,6 +203,46 @@ I have also worked as an IT-consultant at Netcompany for 2 years where I was inv
 * LinkedIn: [link](www.linkedin.com/in/simon-kok-lupemba)
 * Gitgub: [link](https://github.com/lupemba)
 
+### Simon Danisch
+
+Simon is the author of [Makie](makie.org) and currently works full time on Makie as a freelancer.
+He has been part of the Julia community for more than 10 years and is the author of many Julia packages.
+To just name a few that are still actively used by many people in the Julia community: Makie, GeometryBasics, GPUArrays, PackageCompiler, JSServe and FileIO. 
+
+His mission has always been, to create a sustainable plotting and graphics ecosystem for Julia, which enables visualizations in need of high performance as well as making it very easy to quickly create simple plots and integrate them into dashboards.
+
+Nowadays, with Climate change threatening to destroy the fundament of our modern life, he is focusing his efforts on making sure that Makie works well for climate science to better understand the changes that are coming for us.
+
+* LinkedIn: [link](https://www.linkedin.com/in/simondanisch/)
+* Gitgub: [link](https://github.com/simondanisch/)
+* Twitter: [link](https://twitter.com/SimonDanisch)
+* ORCID: [link](https://orcid.org/0000-0001-8834-6644)
+
+### Martijn Visser
+
+Martijn Visser is a hydrologist at Deltares, where he focuses on integrated water resources management, as well as building open source software to support it. As an early adopter of the Julia programming language he’s been active in the open source community, helping to set up and maintain JuliaGeo and its packages, which aim to make it easier to work with geospatial data in Julia.
+
+* LinkedIn: [link](https://www.linkedin.com/in/visr/)
+* Gitgub: [link](https://www.linkedin.com/in/visr/)
+* Twitter: [link](https://twitter.com/martijnvisr)
+* ORCID: [link](https://orcid.org/0000-0001-9838-1590)
+
+### Alexander Barth
+
+Alexander Barth is a researcher working at the University of Liege (Belgium) in the GHER group (GeoHydrodynamics and Environment Research). He did a PhD on nested numerical ocean models and data assimilation. Currently he is working on variational analysis schemes for climatologies and neural networks to reconstruct missing data.
+
+* Gitgub: [link](https://github.com/Alexander-Barth/)
+* ORCID: [link](https://orcid.org/0000-0003-2952-5997)
+
+### Eigil Yuichi Hyldgaard Lippert
+
+I am currently pursuing a Ph.d. in Numerical Glaciology in which I am working with a reconstruction of the Greenland ice sheet and its glaciers, going back to the last little ice age. This work is mostly centered around finite element modeling of glaciers and trying to understand their main drivers and dynamics. 
+
+Before this, I did a master's degree in engineering, focused on earth observation data, large-scale physics, and machine learning. I was involved in satellite observation and analysis and developed a method for synthesizing landslides in the InSAR coherence domain and building an algorithm that could detect these signatures in real-world SAR Coherence data. I also developed an InSAR coherence processor in Julia which could process SLC data and create interferograms and coherence estimates. I am currently in the process of porting this work into an open-source library, together with 3 other people.
+
+* LinkedIn: [link](https://www.linkedin.com/in/eigil-lippert/)
+* Gitgub: [link](https://github.com/eyhl)
+* ORCID: [link](https://orcid.org/0000-0002-8234-5584)
 
 ## Outcomes 
 * Capacity building of the AIR Centre and other institutions invited.
@@ -221,4 +260,4 @@ I have also worked as an IT-consultant at Netcompany for 2 years where I was inv
 2. Do I need to register to attend the workshop?     
 *Yes. If you (your institution) received an invitation, please write to juliaeo@aircentre.org and request access to the form to register.*     
 3. Does the AIR Centre provide transfers from the airport to the hotel? *Yes but for the speakers only.*
-4. How to access the Slack channel? *Type juliaeo2023 in the Slack search bar.*
+4. How to access the Slack channel? *Go to the [julialang.slack.com](http://julialang.slack.com/) Workspace and type juliaeo2023 in the Slack search bar.*
