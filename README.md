@@ -1,4 +1,4 @@
-# JuliaEO - Earth Observation with Julia Workshop
+# JuliaEO - Earth Observation with Julia Workshop 🌍 🛰️
 Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up-to-date-program**.
 
 The communication Slack channel
@@ -8,7 +8,7 @@ Channel ID: ***C0480TAQJ9Y***
 <p align="center">
   <img src="https://i.imgur.com/ITsguqy.png" height="200"><br>
 
-**Date**: 9-13 January 2023     
+**Date**: 9-13 January 2023   
 **Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
 **Type**: In-person, full-week, technical and networking.  
 **Accommodation**: Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. 
@@ -185,14 +185,16 @@ The following speakers have been selected from the Julia community to participat
 The selection was based on the level of skill and commitment demonstrated, with contributions to the EO software packages which are most needed for AIR Centre's current work and future development.
 
 
-### Júlio Hoffimann
+## Júlio Hoffimann
+
 Dr. Júlio has more than 10 years of experience in advanced statistical theories for geosciences. He is creator and lead developer of the GeoStats.jl project, as well as various other open source projects that are widely used by geoscientists around the world.
 
 * LinkedIn: [link](https://www.linkedin.com/in/j%C3%BAlio-hoffimann-834936116)
 * Gitgub: [link](https://github.com/juliohm)
 * ORCID: [link](https://orcid.org/0000-0003-2789-297X)
 
-### Simon Kok Lupemba
+
+## Simon Kok Lupemba
 
 Junior Remote Sensing Scientist at EUMETSAT working in the scatterometry team. I support the quality monitoring, calibration and validation of operational scatterometer products and also prototype and maintain processing software for the extraction of products.
 
@@ -200,10 +202,12 @@ I am a MSc graduate in Earth and Space Physics and Engineering from DTU and I ha
 
 I have also worked as an IT-consultant at Netcompany for 2 years where I was involved with support, maintenance and development of medium-sized public IT projects. My regular tasks included; defining and estimating tasks, developing new features, fixing existing bugs and providing general support.
 
+
 * LinkedIn: [link](www.linkedin.com/in/simon-kok-lupemba)
 * Gitgub: [link](https://github.com/lupemba)
 
-### Simon Danisch
+
+## Simon Danisch
 
 Simon is the author of [Makie](makie.org) and currently works full time on Makie as a freelancer.
 He has been part of the Julia community for more than 10 years and is the author of many Julia packages.
@@ -218,7 +222,7 @@ Nowadays, with Climate change threatening to destroy the fundament of our modern
 * Twitter: [link](https://twitter.com/SimonDanisch)
 * ORCID: [link](https://orcid.org/0000-0001-8834-6644)
 
-### Martijn Visser
+## Martijn Visser
 
 Martijn Visser is a hydrologist at Deltares, where he focuses on integrated water resources management, as well as building open source software to support it. As an early adopter of the Julia programming language he’s been active in the open source community, helping to set up and maintain JuliaGeo and its packages, which aim to make it easier to work with geospatial data in Julia.
 
@@ -227,14 +231,14 @@ Martijn Visser is a hydrologist at Deltares, where he focuses on integrated wate
 * Twitter: [link](https://twitter.com/martijnvisr)
 * ORCID: [link](https://orcid.org/0000-0001-9838-1590)
 
-### Alexander Barth
+## Alexander Barth
 
 Alexander Barth is a researcher working at the University of Liege (Belgium) in the GHER group (GeoHydrodynamics and Environment Research). He did a PhD on nested numerical ocean models and data assimilation. Currently he is working on variational analysis schemes for climatologies and neural networks to reconstruct missing data.
 
 * Gitgub: [link](https://github.com/Alexander-Barth/)
 * ORCID: [link](https://orcid.org/0000-0003-2952-5997)
 
-### Eigil Yuichi Hyldgaard Lippert
+## Eigil Yuichi Hyldgaard Lippert
 
 I am currently pursuing a Ph.d. in Numerical Glaciology in which I am working with a reconstruction of the Greenland ice sheet and its glaciers, going back to the last little ice age. This work is mostly centered around finite element modeling of glaciers and trying to understand their main drivers and dynamics. 
 
@@ -243,6 +247,45 @@ Before this, I did a master's degree in engineering, focused on earth observatio
 * LinkedIn: [link](https://www.linkedin.com/in/eigil-lippert/)
 * Gitgub: [link](https://github.com/eyhl)
 * ORCID: [link](https://orcid.org/0000-0002-8234-5584)
+
+## Maarten Pronk
+
+Maarten Pronk is a researcher at Deltares and an external PhD candidate at the Delft University of Technology. He holds a MSc in Geomatics and a BSc in Architecture, both from the Delft University of Technology (NL). His research concerns elevation modelling, especially in lowlands prone to coastal flooding. He aims to combine his interests in remote sensing and software engineering for societal impact. He promotes open and reproducible research and is the author of several open-source software packages for handling geospatial data, written in the Julia programming language. His work often involves handling trillions of elevation measurements, requiring a careful selection and design of both spatial storage formats and processing algorithms. Currently he works on applying data from ICESat-2, a LiDAR satellite, on global elevation models.
+
+* LinkedIn: [link](https://www.linkedin.com/in/mjpronk/)
+* Gitgub: [link](https://github.com/evetion/)
+* Twitter: [link](https://twitter.com/3vetion)
+* ORCID: [link](https://orcid.org/0000-0001-8758-3939)
+
+## Logan Kilpatrick
+
+Logan currently splits his time between a number of professional commitments he is passionate about. He is a full time Senior Technology Advocate at PathAI, the Developer Community Advocate for the Julia Programming Language, and a Teaching Fellow for Harvard University's Extension School course CSCI E-33A. Logan was previously a Applied Machine Learning Engineer and Software Engineer at Apple as well as the Community Manager for the Julia Programming Language. Additionally, Logan is on the Board of Directors at NumFOCUS and DEFNA.
+
+Education:
+
+Harvard University, Master of Liberal Arts, Extension Studies, Digital Media Design, (in progress) 2023  
+
+Northwestern University, Pritzker School of Law, Master in Law, (in progress) 2024   
+
+Harvard University, Bachelor of Liberal Arts, Extension Studies, Computer Science, Cum Laude, 2021  
+
+Oxford University, Advanced Undergraduate Diploma, Information Technology System Analyis and Design, Distinction, 2021
+
+Undergraduate coursework in CS and general studies at De Anza College. Graduate course work in Electrical Engineering at CU Boulder.
+
+* LinkedIn: [link](https://linkedin.com/in/logankilpatrick)
+* Gitgub: [link](https://github.com/logankilpatrick)
+* Twitter: [link](https://twitter.com/OfficialLoganK)
+
+## Lazaro Alonso
+
+Lazaro Alonso is a Mexican physicist currently working at the Max Planck Institute for Biogeochemistry in the Model Data Integration Group. Interested in Hybrid Model-Based approaches to climate sciences as well as scientific visualization. Other interests of his are complex networks, graph neural networks and time series analysis.
+
+He is a coauthor of the Julia Data Science book and main contributor to the gallery https://beautiful.makie.org/ and contributes as much as possible to open source in his spare time if any.
+
+* LinkedIn: [link](https://www.linkedin.com/in/lazaro-alonso/)
+* Gitgub: [link](https://github.com/lazarusA)
+* Twitter: [link](https://twitter.com/LazarusAlon)
 
 ## Outcomes 
 * Capacity building of the AIR Centre and other institutions invited.
