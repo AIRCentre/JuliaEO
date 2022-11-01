@@ -1,36 +1,33 @@
 # JuliaEO - Earth Observation with Julia Workshop 🌍 🛰️
 Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up-to-date-program**.
 
-The communication Slack channel
-[julialang.slack.com](http://julialang.slack.com/)  ***juliaeo2023***  
-Channel ID: ***C0480TAQJ9Y***
-
 <p align="center">
   <img src="https://i.imgur.com/ITsguqy.png" height="200"><br>
 
-**Date**: 9-13 January 2023   
-**Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
-**Type**: In-person, full-week, technical and networking.  
-**Accommodation**: Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. 
- 
-
-*The AIR Centre provides a shuttle for each workshop day in the morning and afternoon. The evening networking event will be held in the Historic Centre of the Town of [Angra do Heroísmo](https://en.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo) ​​inscribed on the UNESCO World Heritage List.*
+- **Date**: 9-13 January 2023   
+- **Location**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
+- **Event Type**: In-person, full-week, technical and networking. 
+- **Slack channel**: [julialang.slack.com](http://julialang.slack.com/) / **juliaeo2023** (Channel ID: C0480TAQJ9Y)
 
 ## Introduction  
 
-The following training workshop aims at providing quality computer programming skills to the staff members of the AIR Centre's [Earth Observation Laboratory (EO Lab)](https://www.aircentre.org/eo-lab/) located on Terceira Island, in the Azores. The EO Lab is only three years old, and much of its staff is at the beginning of their career, while others are transitioning from older programming languages/methods/paradigms. The shift from graphical user interface GUI-based work to computer coding (programming) is fundamental to support both *replicable research* and the upscaling of solutions to *prototypes* and *proofs-of-concept*, which better permeate the economy.
+The training workshop aims at providing novel computer programming skills to the staff members of the AIR Centre's [Earth Observation Laboratory (EO Lab)](https://www.aircentre.org/eo-lab/). 
 
-To simulate collaboration beyond the training, the workshop is presential (full week). However, for a wider reach, we aim to deliver several sessions online.
+To simulate collaboration beyond the training, the workshop is in person (full week). However, for a wider reach, we aim to deliver several sessions online.
 
-The topics to be covered include acquisition, processing, visualisation, and classification of Earth Observation data, using the [Julia programming language](https://julialang.org/).
-
-The open-source Julia language is relatively recent. It was created at the [Massachusetts Institute of Technology (MIT)](https://www.mit.edu), first released in 2012, and reached the v1.0 milestone in 2018. Julia has a vocation for high-performance scientific computing, making it today's ideal choice to work on resource-intensive datasets such as the Earth Observation ones.
+The topics covered include acquisition, processing, visualisation, and classification of Earth Observation data, using the [Julia programming language](https://julialang.org/).
 
 The training workshop will emphasize practical activities including the use of novel datasets, libraries/packages, automated workflows, Artificial Intelligence (AI), and classification algorithms. Theory-oriented sessions will introduce the concepts and hands-on activities.
 
 Beyond the direct advantages of the staff training, the concentration of talent in one event responds to a long-term vision of the EO Lab to embed itself and its staff members into "lower-level" scientific networks, creating new opportunities for collaboration and contributing to shaping the agenda.
 
-Mutual benefits arising from the collaboration of the AIR Centre and the Julia community are:
+## Background 
+
+The EO Lab is located on Terceira Island, in the Azores. Since the EO Lab is only three years old, and much of its staff is at the beginning of their career, while others are transitioning from older programming languages/methods/paradigms. 
+
+The open-source Julia language is relatively recent. It was created at the [Massachusetts Institute of Technology (MIT)](https://www.mit.edu), first released in 2012, and reached the v1.0 milestone in 2018. Julia has a vocation for high-performance scientific computing, making it today's ideal choice to work on resource-intensive datasets such as the Earth Observation ones.
+
+Mutual benefits expected to arise from the collaboration of the AIR Centre and the Julia community include:
 
 * Capacity building for AIR Centre's staff and other invited institutions. 
 * Create collaboration opportunities between the participants and speakers.
@@ -38,11 +35,9 @@ Mutual benefits arising from the collaboration of the AIR Centre and the Julia c
 * Bringing together the two communities around Julia: developers and end-users.
 * Opening new avenues for collaboration on both software and science.
 * Contributing to strengthening the open source / science community.
-* Creating an axis of collaboration to study the Azores region using Earth Observation, numerical models, and data products, possibly with the goal of co-advising students.
+* Creating an axis of collaboration to study the Azores region using Earth Observation, numerical models, and data products.
 * Finding new prospective contributors to Julia packages; helping developers build up their user community; identifying needs and desired new features.
 * Providing additional exposure for the products and activity of the AIR Centre; via US and EU growing Julia communities.
-
-
 
 ## Program   
 
@@ -287,15 +282,19 @@ He is a coauthor of the Julia Data Science book and main contributor to the gall
 * Gitgub: [link](https://github.com/lazarusA)
 * Twitter: [link](https://twitter.com/LazarusAlon)
 
-## Outcomes 
-* Capacity building of the AIR Centre and other institutions invited.
+## Expected Outcomes
+
+* Capacity building of the AIR Centre and invited institutions.
 * Establish relationships with, and expand the Julia community. 
-* Establish the AIRCentre as an active member of that community. 
+* Establish the AIRCentre as an active member of the Julia community. 
 * Contribute to the development of existing packages.
 * Identify opportunities for the creation of new packages.
 * Strengthen the scientific community/network around the Atlantic/world.
 * Seeding future collaborations.
 
+## Location
+
+Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. The AIR Centre provides a shuttle for each workshop day in the morning and afternoon. The evening networking event will be held in the Historic Centre of the Town of [Angra do Heroísmo](https://en.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo) ​​inscribed on the UNESCO World Heritage List.
 
 ## FAQ
 
@@ -304,3 +303,8 @@ He is a coauthor of the Julia Data Science book and main contributor to the gall
 *Yes. If you (your institution) received an invitation, please write to juliaeo@aircentre.org and request access to the form to register.*     
 3. Does the AIR Centre provide transfers from the airport to the hotel? *Yes but for the speakers only.*
 4. How to access the Slack channel? *Go to the [julialang.slack.com](http://julialang.slack.com/) Workspace and type juliaeo2023 in the Slack search bar.*
+
+## Organizing Comittee
+
+- Joao Pinelo, Iga Szczesniak, Andre Valente (AIR Centre)
+- Gael Forget (MIT)
