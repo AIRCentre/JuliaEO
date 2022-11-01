@@ -308,3 +308,8 @@ He is a coauthor of the Julia Data Science book and main contributor to the gall
 *Yes. If you (your institution) received an invitation, please write to juliaeo@aircentre.org and request access to the form to register.*     
 3. Does the AIR Centre provide transfers from the airport to the hotel? *Yes but for the speakers only.*
 4. How to access the Slack channel? *Go to the [julialang.slack.com](http://julialang.slack.com/) Workspace and type juliaeo2023 in the Slack search bar.*
+
+## Organizing Comittee
+
+- Joao Pinelo, Iga Szczesniak, Andre Valente (AIR Centre)
+- Gael Forget (MIT)
