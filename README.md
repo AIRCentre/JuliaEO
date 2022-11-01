@@ -1,20 +1,13 @@
 # JuliaEO - Earth Observation with Julia Workshop 🌍 🛰️
 Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up-to-date-program**.
 
-The communication Slack channel
-[julialang.slack.com](http://julialang.slack.com/)  ***juliaeo2023***  
-Channel ID: ***C0480TAQJ9Y***
-
 <p align="center">
   <img src="https://i.imgur.com/ITsguqy.png" height="200"><br>
 
-**Date**: 9-13 January 2023   
-**Place**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
-**Type**: In-person, full-week, technical and networking.  
-**Accommodation**: Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. 
- 
-
-*The AIR Centre provides a shuttle for each workshop day in the morning and afternoon. The evening networking event will be held in the Historic Centre of the Town of [Angra do Heroísmo](https://en.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo) ​​inscribed on the UNESCO World Heritage List.*
+- **Date**: 9-13 January 2023   
+- **Location**: [Science and Technology Park](https://terinovazores.pt/), on [Terceira Island](https://exploreterceira.com), in the [Azores](https://en.wikipedia.org/wiki/Azores).     
+- **Event Type**: In-person, full-week, technical and networking. 
+- **Slack channel**: [julialang.slack.com](http://julialang.slack.com/) / **juliaeo2023** (Channel ID: C0480TAQJ9Y)
 
 ## Introduction  
 
@@ -45,8 +38,6 @@ Mutual benefits expected to arise from the collaboration of the AIR Centre and t
 * Creating an axis of collaboration to study the Azores region using Earth Observation, numerical models, and data products.
 * Finding new prospective contributors to Julia packages; helping developers build up their user community; identifying needs and desired new features.
 * Providing additional exposure for the products and activity of the AIR Centre; via US and EU growing Julia communities.
-
-
 
 ## Program   
 
@@ -291,15 +282,19 @@ He is a coauthor of the Julia Data Science book and main contributor to the gall
 * Gitgub: [link](https://github.com/lazarusA)
 * Twitter: [link](https://twitter.com/LazarusAlon)
 
-## Outcomes 
-* Capacity building of the AIR Centre and other institutions invited.
+## Expected Outcomes
+
+* Capacity building of the AIR Centre and invited institutions.
 * Establish relationships with, and expand the Julia community. 
-* Establish the AIRCentre as an active member of that community. 
+* Establish the AIRCentre as an active member of the Julia community. 
 * Contribute to the development of existing packages.
 * Identify opportunities for the creation of new packages.
 * Strengthen the scientific community/network around the Atlantic/world.
 * Seeding future collaborations.
 
+## Location
+
+Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. The AIR Centre provides a shuttle for each workshop day in the morning and afternoon. The evening networking event will be held in the Historic Centre of the Town of [Angra do Heroísmo](https://en.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo) ​​inscribed on the UNESCO World Heritage List.
 
 ## FAQ
 
