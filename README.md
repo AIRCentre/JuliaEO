@@ -185,7 +185,7 @@ The selection was based on the level of skill and commitment demonstrated, with 
 Dr. Júlio has more than 10 years of experience in advanced statistical theories for geosciences. He is creator and lead developer of the GeoStats.jl project, as well as various other open source projects that are widely used by geoscientists around the world.
 
 * LinkedIn: [link](https://www.linkedin.com/in/j%C3%BAlio-hoffimann-834936116)
-* Gitgub: [link](https://github.com/juliohm)
+* GitHub: [link](https://github.com/juliohm)
 * ORCID: [link](https://orcid.org/0000-0003-2789-297X)
 
 
@@ -199,7 +199,7 @@ I have also worked as an IT-consultant at Netcompany for 2 years where I was inv
 
 
 * LinkedIn: [link](www.linkedin.com/in/simon-kok-lupemba)
-* Gitgub: [link](https://github.com/lupemba)
+* GitHub: [link](https://github.com/lupemba)
 
 
 ## Simon Danisch
@@ -213,7 +213,7 @@ His mission has always been, to create a sustainable plotting and graphics ecosy
 Nowadays, with Climate change threatening to destroy the fundament of our modern life, he is focusing his efforts on making sure that Makie works well for climate science to better understand the changes that are coming for us.
 
 * LinkedIn: [link](https://www.linkedin.com/in/simondanisch/)
-* Gitgub: [link](https://github.com/simondanisch/)
+* GitHub: [link](https://github.com/simondanisch/)
 * Twitter: [link](https://twitter.com/SimonDanisch)
 * ORCID: [link](https://orcid.org/0000-0001-8834-6644)
 
@@ -222,7 +222,7 @@ Nowadays, with Climate change threatening to destroy the fundament of our modern
 Martijn Visser is a hydrologist at Deltares, where he focuses on integrated water resources management, as well as building open source software to support it. As an early adopter of the Julia programming language he’s been active in the open source community, helping to set up and maintain JuliaGeo and its packages, which aim to make it easier to work with geospatial data in Julia.
 
 * LinkedIn: [link](https://www.linkedin.com/in/visr/)
-* Gitgub: [link](https://www.linkedin.com/in/visr/)
+* GitHub: [link](https://github.com/visr/)
 * Twitter: [link](https://twitter.com/martijnvisr)
 * ORCID: [link](https://orcid.org/0000-0001-9838-1590)
 
@@ -230,7 +230,7 @@ Martijn Visser is a hydrologist at Deltares, where he focuses on integrated wate
 
 Alexander Barth is a researcher working at the University of Liege (Belgium) in the GHER group (GeoHydrodynamics and Environment Research). He did a PhD on nested numerical ocean models and data assimilation. Currently he is working on variational analysis schemes for climatologies and neural networks to reconstruct missing data.
 
-* Gitgub: [link](https://github.com/Alexander-Barth/)
+* GitHub: [link](https://github.com/Alexander-Barth/)
 * ORCID: [link](https://orcid.org/0000-0003-2952-5997)
 
 ## Eigil Yuichi Hyldgaard Lippert
@@ -240,7 +240,7 @@ I am currently pursuing a Ph.d. in Numerical Glaciology in which I am working wi
 Before this, I did a master's degree in engineering, focused on earth observation data, large-scale physics, and machine learning. I was involved in satellite observation and analysis and developed a method for synthesizing landslides in the InSAR coherence domain and building an algorithm that could detect these signatures in real-world SAR Coherence data. I also developed an InSAR coherence processor in Julia which could process SLC data and create interferograms and coherence estimates. I am currently in the process of porting this work into an open-source library, together with 3 other people.
 
 * LinkedIn: [link](https://www.linkedin.com/in/eigil-lippert/)
-* Gitgub: [link](https://github.com/eyhl)
+* GitHub: [link](https://github.com/eyhl)
 * ORCID: [link](https://orcid.org/0000-0002-8234-5584)
 
 ## Maarten Pronk
@@ -248,7 +248,7 @@ Before this, I did a master's degree in engineering, focused on earth observatio
 Maarten Pronk is a researcher at Deltares and an external PhD candidate at the Delft University of Technology. He holds a MSc in Geomatics and a BSc in Architecture, both from the Delft University of Technology (NL). His research concerns elevation modelling, especially in lowlands prone to coastal flooding. He aims to combine his interests in remote sensing and software engineering for societal impact. He promotes open and reproducible research and is the author of several open-source software packages for handling geospatial data, written in the Julia programming language. His work often involves handling trillions of elevation measurements, requiring a careful selection and design of both spatial storage formats and processing algorithms. Currently he works on applying data from ICESat-2, a LiDAR satellite, on global elevation models.
 
 * LinkedIn: [link](https://www.linkedin.com/in/mjpronk/)
-* Gitgub: [link](https://github.com/evetion/)
+* GitHub: [link](https://github.com/evetion/)
 * Twitter: [link](https://twitter.com/3vetion)
 * ORCID: [link](https://orcid.org/0000-0001-8758-3939)
 
@@ -269,7 +269,7 @@ Oxford University, Advanced Undergraduate Diploma, Information Technology System
 Undergraduate coursework in CS and general studies at De Anza College. Graduate course work in Electrical Engineering at CU Boulder.
 
 * LinkedIn: [link](https://linkedin.com/in/logankilpatrick)
-* Gitgub: [link](https://github.com/logankilpatrick)
+* GitHub: [link](https://github.com/logankilpatrick)
 * Twitter: [link](https://twitter.com/OfficialLoganK)
 
 ## Lazaro Alonso
@@ -279,7 +279,7 @@ Lazaro Alonso is a Mexican physicist currently working at the Max Planck Institu
 He is a coauthor of the Julia Data Science book and main contributor to the gallery https://beautiful.makie.org/ and contributes as much as possible to open source in his spare time if any.
 
 * LinkedIn: [link](https://www.linkedin.com/in/lazaro-alonso/)
-* Gitgub: [link](https://github.com/lazarusA)
+* GitHub: [link](https://github.com/lazarusA)
 * Twitter: [link](https://twitter.com/LazarusAlon)
 
 ## Expected Outcomes
@@ -304,7 +304,7 @@ Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)***
 3. Does the AIR Centre provide transfers from the airport to the hotel? *Yes but for the speakers only.*
 4. How to access the Slack channel? *Go to the [julialang.slack.com](http://julialang.slack.com/) Workspace and type juliaeo2023 in the Slack search bar.*
 
-## Organizing Comittee
+## Organizing Committee
 
 - Joao Pinelo, Iga Szczesniak, Andre Valente (AIR Centre)
 - Gael Forget (MIT)
