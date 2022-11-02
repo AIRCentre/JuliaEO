@@ -184,9 +184,9 @@ The selection was based on the level of skill and commitment demonstrated, with 
 
 Dr. Júlio has more than 10 years of experience in advanced statistical theories for geosciences. He is creator and lead developer of the GeoStats.jl project, as well as various other open source projects that are widely used by geoscientists around the world.
 
-* LinkedIn: [link](https://www.linkedin.com/in/j%C3%BAlio-hoffimann-834936116)
-* GitHub: [link](https://github.com/juliohm)
-* ORCID: [link](https://orcid.org/0000-0003-2789-297X)
+* [LinkedIn](https://www.linkedin.com/in/j%C3%BAlio-hoffimann-834936116)
+* [GitHub](https://github.com/juliohm)
+* [ORCID](https://orcid.org/0000-0003-2789-297X)
 
 
 ## Simon Kok Lupemba
