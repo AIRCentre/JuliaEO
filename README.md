@@ -132,7 +132,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **8:30** Shuttle (Hotel - Terinov)
 
-**9:00 – 9:45** Plenary session 1 Data science, big data, and cloud native solutions *F. Gans?*
+**9:00 – 9:45** Plenary session 1 Data science, big data, and cloud native solutions *F. Gans (remote)*
 
 **9:45 – 10:05** Coffee break
 
@@ -164,7 +164,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **19:45 – 10:05** Coffee break
 
-**10:05 – 12:00** Hands-on session 1.1 Datacubes for high-resolution EO data *F. Cremer, F. Gans?*
+**10:05 – 12:00** Hands-on session 1.1 Datacubes for high-resolution EO data *F. Cremer (on-site), F. Gans (remote)*
 
 **10:05 – 12:00** Hands-on session 1.2 Retrieving Bio-Geophysical parameters from space *N. Wong, A. Barth*
 
@@ -180,6 +180,43 @@ The following speakers have been selected from the Julia community to participat
 The selection was based on the level of skill and commitment demonstrated, with contributions to the EO software packages which are most needed for AIR Centre's current work and future development.
 
 
+## Alexander Barth
+
+Alexander Barth is a researcher working at the University of Liege (Belgium) in the GHER group (GeoHydrodynamics and Environment Research). He did a PhD on nested numerical ocean models and data assimilation. Currently he is working on variational analysis schemes for climatologies and neural networks to reconstruct missing data.
+
+* [GitHub](https://github.com/Alexander-Barth/)
+* [ORCID](https://orcid.org/0000-0003-2952-5997)
+
+## Eigil Yuichi Hyldgaard Lippert
+
+I am currently pursuing a Ph.d. in Numerical Glaciology in which I am working with a reconstruction of the Greenland ice sheet and its glaciers, going back to the last little ice age. This work is mostly centered around finite element modeling of glaciers and trying to understand their main drivers and dynamics. 
+
+Before this, I did a master's degree in engineering, focused on earth observation data, large-scale physics, and machine learning. I was involved in satellite observation and analysis and developed a method for synthesizing landslides in the InSAR coherence domain and building an algorithm that could detect these signatures in real-world SAR Coherence data. I also developed an InSAR coherence processor in Julia which could process SLC data and create interferograms and coherence estimates. I am currently in the process of porting this work into an open-source library, together with 3 other people.
+
+* [LinkedIn](https://www.linkedin.com/in/eigil-lippert/)
+* [GitHub](https://github.com/eyhl)
+* [ORCID](https://orcid.org/0000-0002-8234-5584)
+
+## Fabian Gans
+
+## Felix Cremer
+
+Felix Cremer received his diploma in mathematics from the University of Leipzig in 2014. In 2016 he started his PhD study on time series analysis of hypertemporal Sentinel-1 radar data.   
+He is interested in the use of irregular time series tools on Synthetic Aperture Radar data to derive more robust information from these data sets.   
+He worked on the development of deforestation mapping algorithms and on flood mapping in the amazon using Sentinel-1 data.  
+He currently works at the Max-Planck-Institute for Biogeochemistry on the development of the JuliaDataCubes ecosystem in the scope of the [NFDI4Earth](www.nfdi4earth.de) project. The JuliaDataCubes organisation provides easy to use interfaces for the use of multi dimensional raster data. 
+
+* [GitHub](https://github.com/felixcremer)
+* [ORCID](https://orcid.org/0000-0001-8659-4361)
+
+## Gaël Forget
+
+I currently work as a research scientist at the Massachusetts Institute of Technology (MIT) in the Department of Earth, Atmospheric and Planetary Sciences. My recent research involves satellite observations, ocean robots, numerical models, marine ecosystems, and various estimation methods (incl. AI,ML,AD,DA). I created the JuliaOcean and JuliaClimate organizations, and am the lead developer of a series of Julia packages focused on ocean and climate science. These include MeshArrays.jl (JuliaCon18), ClimateModels.jl (JuliaCon21), and OceanRobots (JuliaCon21).
+
+* [GitHub](https://github.com/gaelforget)
+* [Twitter](https://twitter.com/GaelForget)
+* [ORCID](https://orcid.org/0000-0002-4234-056X)
+
 ## Júlio Hoffimann
 
 Dr. Júlio has more than 10 years of experience in advanced statistical theories for geosciences. He is creator and lead developer of the GeoStats.jl project, as well as various other open source projects that are widely used by geoscientists around the world.
@@ -188,69 +225,15 @@ Dr. Júlio has more than 10 years of experience in advanced statistical theories
 * [GitHub](https://github.com/juliohm)
 * [ORCID](https://orcid.org/0000-0003-2789-297X)
 
+## Lazaro Alonso
 
-## Simon Kok Lupemba
+Lazaro Alonso is a Mexican physicist currently working at the Max Planck Institute for Biogeochemistry in the Model Data Integration Group. Interested in Hybrid Model-Based approaches to climate sciences as well as scientific visualization. Other interests of his are complex networks, graph neural networks and time series analysis.
 
-Junior Remote Sensing Scientist at EUMETSAT working in the scatterometry team. I support the quality monitoring, calibration and validation of operational scatterometer products and also prototype and maintain processing software for the extraction of products.
+He is a coauthor of the Julia Data Science book and main contributor to the gallery https://beautiful.makie.org/ and contributes as much as possible to open source in his spare time if any.
 
-I am a MSc graduate in Earth and Space Physics and Engineering from DTU and I have hands-on experience working with SAR data from my studies. Most of my academic projects focused on processing SAR images e.g. speckle filtering, interferometric coherence and automated flood mapping. I have implemented InSAR coherence processing in Julia (programming language) without using commercial software or SAR related libraries.
-
-I have also worked as an IT-consultant at Netcompany for 2 years where I was involved with support, maintenance and development of medium-sized public IT projects. My regular tasks included; defining and estimating tasks, developing new features, fixing existing bugs and providing general support.
-
-
-* LinkedIn: [link](www.linkedin.com/in/simon-kok-lupemba)
-* GitHub: [link](https://github.com/lupemba)
-
-
-## Simon Danisch
-
-Simon is the author of [Makie](makie.org) and currently works full time on Makie as a freelancer.
-He has been part of the Julia community for more than 10 years and is the author of many Julia packages.
-To just name a few that are still actively used by many people in the Julia community: Makie, GeometryBasics, GPUArrays, PackageCompiler, JSServe and FileIO. 
-
-His mission has always been, to create a sustainable plotting and graphics ecosystem for Julia, which enables visualizations in need of high performance as well as making it very easy to quickly create simple plots and integrate them into dashboards.
-
-Nowadays, with Climate change threatening to destroy the fundament of our modern life, he is focusing his efforts on making sure that Makie works well for climate science to better understand the changes that are coming for us.
-
-* LinkedIn: [link](https://www.linkedin.com/in/simondanisch/)
-* GitHub: [link](https://github.com/simondanisch/)
-* Twitter: [link](https://twitter.com/SimonDanisch)
-* ORCID: [link](https://orcid.org/0000-0001-8834-6644)
-
-## Martijn Visser
-
-Martijn Visser is a hydrologist at Deltares, where he focuses on integrated water resources management, as well as building open source software to support it. As an early adopter of the Julia programming language he’s been active in the open source community, helping to set up and maintain JuliaGeo and its packages, which aim to make it easier to work with geospatial data in Julia.
-
-* LinkedIn: [link](https://www.linkedin.com/in/visr/)
-* GitHub: [link](https://github.com/visr/)
-* Twitter: [link](https://twitter.com/martijnvisr)
-* ORCID: [link](https://orcid.org/0000-0001-9838-1590)
-
-## Alexander Barth
-
-Alexander Barth is a researcher working at the University of Liege (Belgium) in the GHER group (GeoHydrodynamics and Environment Research). He did a PhD on nested numerical ocean models and data assimilation. Currently he is working on variational analysis schemes for climatologies and neural networks to reconstruct missing data.
-
-* GitHub: [link](https://github.com/Alexander-Barth/)
-* ORCID: [link](https://orcid.org/0000-0003-2952-5997)
-
-## Eigil Yuichi Hyldgaard Lippert
-
-I am currently pursuing a Ph.d. in Numerical Glaciology in which I am working with a reconstruction of the Greenland ice sheet and its glaciers, going back to the last little ice age. This work is mostly centered around finite element modeling of glaciers and trying to understand their main drivers and dynamics. 
-
-Before this, I did a master's degree in engineering, focused on earth observation data, large-scale physics, and machine learning. I was involved in satellite observation and analysis and developed a method for synthesizing landslides in the InSAR coherence domain and building an algorithm that could detect these signatures in real-world SAR Coherence data. I also developed an InSAR coherence processor in Julia which could process SLC data and create interferograms and coherence estimates. I am currently in the process of porting this work into an open-source library, together with 3 other people.
-
-* LinkedIn: [link](https://www.linkedin.com/in/eigil-lippert/)
-* GitHub: [link](https://github.com/eyhl)
-* ORCID: [link](https://orcid.org/0000-0002-8234-5584)
-
-## Maarten Pronk
-
-Maarten Pronk is a researcher at Deltares and an external PhD candidate at the Delft University of Technology. He holds a MSc in Geomatics and a BSc in Architecture, both from the Delft University of Technology (NL). His research concerns elevation modelling, especially in lowlands prone to coastal flooding. He aims to combine his interests in remote sensing and software engineering for societal impact. He promotes open and reproducible research and is the author of several open-source software packages for handling geospatial data, written in the Julia programming language. His work often involves handling trillions of elevation measurements, requiring a careful selection and design of both spatial storage formats and processing algorithms. Currently he works on applying data from ICESat-2, a LiDAR satellite, on global elevation models.
-
-* LinkedIn: [link](https://www.linkedin.com/in/mjpronk/)
-* GitHub: [link](https://github.com/evetion/)
-* Twitter: [link](https://twitter.com/3vetion)
-* ORCID: [link](https://orcid.org/0000-0001-8758-3939)
+* [LinkedIn](https://www.linkedin.com/in/lazaro-alonso/)
+* [GitHub](https://github.com/lazarusA)
+* [Twitter](https://twitter.com/LazarusAlon)
 
 ## Logan Kilpatrick
 
@@ -268,19 +251,69 @@ Oxford University, Advanced Undergraduate Diploma, Information Technology System
 
 Undergraduate coursework in CS and general studies at De Anza College. Graduate course work in Electrical Engineering at CU Boulder.
 
-* LinkedIn: [link](https://linkedin.com/in/logankilpatrick)
-* GitHub: [link](https://github.com/logankilpatrick)
-* Twitter: [link](https://twitter.com/OfficialLoganK)
+* [LinkedIn](https://linkedin.com/in/logankilpatrick)
+* [GitHub](https://github.com/logankilpatrick)
+* [Twitter](https://twitter.com/OfficialLoganK)
 
-## Lazaro Alonso
+## Maarten Pronk
 
-Lazaro Alonso is a Mexican physicist currently working at the Max Planck Institute for Biogeochemistry in the Model Data Integration Group. Interested in Hybrid Model-Based approaches to climate sciences as well as scientific visualization. Other interests of his are complex networks, graph neural networks and time series analysis.
+Maarten Pronk is a researcher at Deltares and an external PhD candidate at the Delft University of Technology. He holds a MSc in Geomatics and a BSc in Architecture, both from the Delft University of Technology (NL). His research concerns elevation modelling, especially in lowlands prone to coastal flooding. He aims to combine his interests in remote sensing and software engineering for societal impact. He promotes open and reproducible research and is the author of several open-source software packages for handling geospatial data, written in the Julia programming language. His work often involves handling trillions of elevation measurements, requiring a careful selection and design of both spatial storage formats and processing algorithms. Currently he works on applying data from ICESat-2, a LiDAR satellite, on global elevation models.
 
-He is a coauthor of the Julia Data Science book and main contributor to the gallery https://beautiful.makie.org/ and contributes as much as possible to open source in his spare time if any.
+* [LinkedIn](https://www.linkedin.com/in/mjpronk/)
+* [GitHub](https://github.com/evetion/)
+* [Twitter](https://twitter.com/3vetion)
+* [ORCID](https://orcid.org/0000-0001-8758-3939)
 
-* LinkedIn: [link](https://www.linkedin.com/in/lazaro-alonso/)
-* GitHub: [link](https://github.com/lazarusA)
-* Twitter: [link](https://twitter.com/LazarusAlon)
+## Martijn Visser
+
+Martijn Visser is a hydrologist at Deltares, where he focuses on integrated water resources management, as well as building open source software to support it. As an early adopter of the Julia programming language he’s been active in the open source community, helping to set up and maintain JuliaGeo and its packages, which aim to make it easier to work with geospatial data in Julia.
+
+* [LinkedIn](https://www.linkedin.com/in/visr/)
+* [GitHub](https://www.linkedin.com/in/visr/)
+* [Twitter](https://twitter.com/martijnvisr)
+* [ORCID](https://orcid.org/0000-0001-9838-1590)
+
+## Nathanael Wong
+
+Nathanael is a 4th Year PhD Candidate at Harvard University studying Tropical Climate Dynamics using a range of tools, from satellite observations and reanalysis datasets, to climate models that range from idealized small-domains, to global models. For the past three years, he has used Julia to aid in the retrieval and analysis of various climate observational datasets, and in the future aims to use Julia to help speed up the analysis of climate model output. Currently, he works under Professor Kuang to understand the differences in precipitation and moisture dynamics over tropical islands from both oceanic and continental regions.
+
+* [GitHub](https://github.com/natgeo-wong)
+* [Twitter](https://twitter.com/natgeo_wong)
+
+## Rafael Schouten
+
+Rafael Schouten is an Australian macroecologist with a background in niche and dispersal modelling of terrestrial plant and animal distributions in the context of climate, invasive species and deforestation. Currently he is doing a PhD in drivers of island extinctions at the Center for Macroecology, Evoloution and Climate in Copenhagen. 
+
+Rafael authors Rasters.jl and packages on spatial process modelling such as DynamicGrids.jl along with a number of supporting tools like DimensionalData.jl and ModelParameters.jl. He also works on or co-maintains a number of the JuliaGeo packages and related tools.
+
+* [GitHub](https://github.com/rafaqz)
+* [ORCID](https://orcid.org/0000-0002-8380-0884)
+
+## Simon Danisch
+
+Simon is the author of [Makie](makie.org) and currently works full time on Makie as a freelancer.
+He has been part of the Julia community for more than 10 years and is the author of many Julia packages.
+To just name a few that are still actively used by many people in the Julia community: Makie, GeometryBasics, GPUArrays, PackageCompiler, JSServe and FileIO. 
+
+His mission has always been, to create a sustainable plotting and graphics ecosystem for Julia, which enables visualizations in need of high performance as well as making it very easy to quickly create simple plots and integrate them into dashboards.
+
+Nowadays, with Climate change threatening to destroy the fundament of our modern life, he is focusing his efforts on making sure that Makie works well for climate science to better understand the changes that are coming for us.
+
+* [LinkedIn](https://www.linkedin.com/in/simondanisch/)
+* [GitHub](https://github.com/simondanisch/)
+* [Twitter](https://twitter.com/SimonDanisch)
+* [ORCID](https://orcid.org/0000-0001-8834-6644)
+
+## Simon Kok Lupemba
+
+Junior Remote Sensing Scientist at EUMETSAT working in the scatterometry team. I support the quality monitoring, calibration and validation of operational scatterometer products and also prototype and maintain processing software for the extraction of products.
+
+I am a MSc graduate in Earth and Space Physics and Engineering from DTU and I have hands-on experience working with SAR data from my studies. Most of my academic projects focused on processing SAR images e.g. speckle filtering, interferometric coherence and automated flood mapping. I have implemented InSAR coherence processing in Julia (programming language) without using commercial software or SAR related libraries.
+
+I have also worked as an IT-consultant at Netcompany for 2 years where I was involved with support, maintenance and development of medium-sized public IT projects. My regular tasks included; defining and estimating tasks, developing new features, fixing existing bugs and providing general support.
+
+* [LinkedIn](www.linkedin.com/in/simon-kok-lupemba)
+* [GitHub](https://github.com/lupemba)
 
 ## Expected Outcomes
 
