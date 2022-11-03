@@ -9,6 +9,10 @@ Repository (datasets, code, etc.), and landing page for the workshop. Contains t
 - **Event Type**: In-person, full-week, technical and networking. 
 - **Slack channel**: [julialang.slack.com](http://julialang.slack.com/) / **juliaeo2023** (Channel ID: C0480TAQJ9Y)
 
+<details close>
+<summary> Introduction </summary>
+<p>
+  
 ## Introduction  
 
 The training workshop aims at providing novel computer programming skills to the staff members of the AIR Centre's [Earth Observation Laboratory (EO Lab)](https://www.aircentre.org/eo-lab/). 
@@ -20,6 +24,14 @@ The topics covered include acquisition, processing, visualisation, and classific
 The training workshop will emphasize practical activities including the use of novel datasets, libraries/packages, automated workflows, Artificial Intelligence (AI), and classification algorithms. Theory-oriented sessions will introduce the concepts and hands-on activities.
 
 Beyond the direct advantages of the staff training, the concentration of talent in one event responds to a long-term vision of the EO Lab to embed itself and its staff members into "lower-level" scientific networks, creating new opportunities for collaboration and contributing to shaping the agenda.
+
+</p>
+</details>
+
+
+<details close>
+<summary> Background </summary>
+<p>
 
 ## Background 
 
@@ -39,6 +51,13 @@ Mutual benefits expected to arise from the collaboration of the AIR Centre and t
 * Finding new prospective contributors to Julia packages; helping developers build up their user community; identifying needs and desired new features.
 * Providing additional exposure for the products and activity of the AIR Centre; via US and EU growing Julia communities.
 
+</p>
+</details>
+
+<details close>
+<summary> Program </summary>
+<p>
+  
 ## Program   
 
 The workshop will encompass different levels of expertise, from beginner to advanced, with a focus on Earth Observation concepts and programming skills. Our idea is to provide a single track of sessions in the morning and more detailed parallel sessions in the afternoon and to split people evenly on the double track part. There are three types of activities:
@@ -174,8 +193,14 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **13:30 Shuttle** (Terinov - Hotel)
 
+</p>
+</details>
 
-## Speakers Bios'
+<details close>
+<summary> Speakers </summary>
+<p>
+  
+## Speakers' Bio
 The following speakers have been selected from the Julia community to participate in this training event. The speakers involve a mix of seasoned and young/aspiring scientists.
 The selection was based on the level of skill and commitment demonstrated, with contributions to the EO software packages which are most needed for AIR Centre's current work and future development.
 
@@ -211,7 +236,7 @@ He currently works at the Max-Planck-Institute for Biogeochemistry on the develo
 
 ## Gaël Forget
 
-I currently work as a research scientist at the Massachusetts Institute of Technology (MIT) in the Department of Earth, Atmospheric and Planetary Sciences. My recent research involves satellite observations, ocean robots, numerical models, marine ecosystems, and various estimation methods (incl. AI,ML,AD,DA). I created the JuliaOcean and JuliaClimate organizations, and am the lead developer of a series of Julia packages focused on ocean and climate science. These include MeshArrays.jl (JuliaCon18), ClimateModels.jl (JuliaCon21), and OceanRobots (JuliaCon21).
+Currently works as a research scientist at the Massachusetts Institute of Technology (MIT) in the Department of Earth, Atmospheric and Planetary Sciences. Research interests and expertise include satellite observations, ocean robots, marine ecosystems, ocean physics, numerical modeling, and estimation in general (incl. AI, ML, DA, & AD). Created the JuliaOcean and JuliaClimate organizations. Lead developer of a series of Julia packages focused on ocean and climate science. These include MeshArrays.jl (JuliaCon18), ClimateModels.jl (JuliaCon21), and OceanRobots (JuliaCon21).
 
 * [GitHub](https://github.com/gaelforget)
 * [Twitter](https://twitter.com/GaelForget)
@@ -315,6 +340,13 @@ I have also worked as an IT-consultant at Netcompany for 2 years where I was inv
 * [LinkedIn](www.linkedin.com/in/simon-kok-lupemba)
 * [GitHub](https://github.com/lupemba)
 
+</p>
+</details>
+
+<details close>
+<summary> Aims </summary>
+<p>
+  
 ## Expected Outcomes
 
 * Capacity building of the AIR Centre and invited institutions.
@@ -325,10 +357,13 @@ I have also worked as an IT-consultant at Netcompany for 2 years where I was inv
 * Strengthen the scientific community/network around the Atlantic/world.
 * Seeding future collaborations.
 
-## Location
+</p>
+</details>
 
-Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. The AIR Centre provides a shuttle for each workshop day in the morning and afternoon. The evening networking event will be held in the Historic Centre of the Town of [Angra do Heroísmo](https://en.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo) ​​inscribed on the UNESCO World Heritage List.
-
+<details close>
+<summary> FAQ </summary>
+<p>
+  
 ## FAQ
 
 1. Is the a fee to attend the workshop? *No.*
@@ -337,7 +372,28 @@ Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)***
 3. Does the AIR Centre provide transfers from the airport to the hotel? *Yes but for the speakers only.*
 4. How to access the Slack channel? *Go to the [julialang.slack.com](http://julialang.slack.com/) Workspace and type juliaeo2023 in the Slack search bar.*
 
+</p>
+</details>
+
+<details close>
+<summary> Location </summary>
+<p>
+  
+## Location
+
+Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)**** in Angra do Heroísmo, Terceira Island. The AIR Centre provides a shuttle for each workshop day in the morning and afternoon. The evening networking event will be held in the Historic Centre of the Town of [Angra do Heroísmo](https://en.wikipedia.org/wiki/Angra_do_Hero%C3%ADsmo) ​​inscribed on the UNESCO World Heritage List.
+
+</p>
+</details>
+
+<details close>
+<summary> Organizing Committee </summary>
+<p>
+  
 ## Organizing Committee
 
 - Joao Pinelo, Iga Szczesniak, Andre Valente (AIR Centre)
 - Gael Forget (MIT)
+
+  </p>
+</details>
