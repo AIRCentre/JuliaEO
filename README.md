@@ -1,4 +1,4 @@
-# JuliaEO - Earth Observation with Julia Workshop 🌍 🛰️
+# JuliaEO 2023 - Global Workshop on Earth Observation with Julia 🌍 🛰️
 Repository (datasets, code, etc.), and landing page for the workshop. Contains the **up-to-date-program**.
 
 <p align="center">
