@@ -397,3 +397,12 @@ Speakers will be hosted in [Hotel do Caracol](https://www.hoteldocaracol.com)***
 
   </p>
 </details>
+
+<details close>
+<summary> Sponsors </summary>
+<p>
+  
+## Sponsors
+
+  </p>
+</details>
