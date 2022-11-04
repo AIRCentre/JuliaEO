@@ -85,7 +85,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **13:15 – 14:00** Plenary session 2 Raster data manipulation: Downloading, Reading, and Visualising *R. Schouten*
 
-**14:00 – 15:55** Hands-on session 2.1 Retrieving Remote Sensing Indices & Masking (TBD) *M. Visser*
+**14:00 – 15:55** Hands-on session 2.1 High-performance geostatistics in Julia *J. Hoffimann*
 
 **14:00 – 15:55** Hands-on session 2.2 Land Cover Classification of Earth Observation images (TBD) *R. Schouten*
 
@@ -133,7 +133,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **8:30** Shuttle (Hotel - Terinov)
 
-**9:00 – 9:45** Plenary session 1 Julia showcases in Oceanography *A. Barth*
+**9:00 – 9:45** Plenary session 1 MBON, seascapes, and the modeling of the Marine Ecosystem *G. Forget*
 
 **19:45 – 10:05** Coffee break
 
@@ -155,7 +155,7 @@ The workshop will encompass different levels of expertise, from beginner to adva
 
 **9:45 – 10:05** Coffee break
 
-**10:05 – 12:00** Hands-on session 1 High-performance geostatistics in Julia *J. Hoffimann*
+**10:05 – 12:00** Hands-on session 1 Julia showcases in Oceanography *A. Barth*
 
 **12:00 – 13:00** Lunch break
 
