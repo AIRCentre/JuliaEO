@@ -17,7 +17,7 @@ Repository (datasets, code, etc.), and landing page for the workshop. Contains t
 
 The training workshop aims at providing novel computer programming skills to the staff members of the AIR Centre's [Earth Observation Laboratory (EO Lab)](https://www.aircentre.org/eo-lab/). 
 
-To simulate collaboration beyond the training, the workshop is in person (full week). However, for a wider reach, we aim to deliver several sessions online.
+To stimulate collaboration beyond the training, the workshop is in person (full week). However, for a wider reach, we will stream some sessions online.
 
 The topics covered include acquisition, processing, visualisation, and classification of Earth Observation data, using the [Julia programming language](https://julialang.org/).
 
