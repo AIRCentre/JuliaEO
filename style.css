@@ -15,7 +15,7 @@
 html {
   color: #222;
   font-size: 1em;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /*
@@ -88,12 +88,53 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
-  background-color: lightblue;
+  background-color:#3D5BC8;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  padding-top: 50px;
+  padding-right: 80px;
+  padding-bottom: 50px;
+  padding-left: 80px;
 }
 
 
+p {
+  font-weight: normal;
+}
+
+h2 {
+  font-weight: lighter;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 
 
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+
+.card__img {
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 62.5%;
+}
 
 
 
