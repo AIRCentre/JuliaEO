@@ -91,7 +91,7 @@ body {
   background-color:#3D5BC8;
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
-  padding-top: 50px;
+  padding-top: 10px;
   padding-right: 80px;
   padding-bottom: 50px;
   padding-left: 80px;
@@ -127,6 +127,13 @@ h2 {
   .column {
     width: 100%;
   }
+  body {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+  }
+
 }
 
 
