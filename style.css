@@ -111,6 +111,11 @@ h2 {
   width: 50%;
 }
 
+.topbar-logo {
+  max-height: 60%;
+  object-fit: contain;
+}
+
 .row {
   display: flex;
 }
