@@ -104,6 +104,10 @@ h2 {
   font-weight: lighter;
 }
 
+.row {
+  height: 100px;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -112,7 +116,7 @@ h2 {
 }
 
 .topbar-logo {
-  max-height: 60%;
+  max-height: 100%;
   object-fit: contain;
 }
 
@@ -122,6 +126,12 @@ h2 {
 
 .column {
   flex: 50%;
+}
+
+.card__img {
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 62.5%;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the columns stack on top of each other instead of next to each other */
@@ -139,11 +149,7 @@ h2 {
 }
 
 
-.card__img {
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 62.5%;
-}
+
 
 
 
