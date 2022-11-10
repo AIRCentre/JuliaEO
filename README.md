@@ -2,7 +2,7 @@
 Repo for resources such as:
  + [Website](https://aircentre.github.io/JuliaEO/ "Up-to-date program")
  + Scripts
- + Dataswets
+ + Datasets
 
 
 
