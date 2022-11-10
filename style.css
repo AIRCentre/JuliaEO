@@ -148,6 +148,25 @@ h2 {
 
 }
 
+/* unvisited link */
+a:link {
+  color: rgb(255, 115, 0);
+}
+
+/* visited link */
+a:visited {
+  color: blue;
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(255, 238, 105);
+}
+
+/* selected link */
+a:active {
+  color: rgb(0, 255, 238);
+}
 
 
 
