@@ -1,2 +1,2 @@
-# JuliaEO 2023 website
+# JuliaEO 2023 repo resources such as for scrypts, dataswets, etc.
 
