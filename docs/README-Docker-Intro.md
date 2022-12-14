@@ -31,7 +31,7 @@
 
 ## Commands
 
-1. Open `terminal window` and `Docker desktop`. 
+1. Open `terminal` window and `Docker` desktop. 
 2. Try out base Jupyter notebook image. In terminal window type:
 	- `docker run -p 8888:8888 jupyter/base-notebook:latest`
 3. Open URL from terminal window in web-browser
@@ -41,15 +41,18 @@
 5. repeat with mounting a data set folder
 	- `docker run -v $(PWD)/MBON_datasets:/home/jovyan/MBON_datasets -p 88...latest`
 	- `docker run -v $(PWD)/worldcover2021:/home/jovyan/worldcover2021 -p 88...latest`
-	- docker run -v -p 8888:8888 gaelforget/notebooks:latest`
 
 ## Notes / Tips
 
 - Copy token from `docker run` immediately. 
-	- Will facilitate restarting container and notebooks.
+	- This will facilitate restarting container and notebooks.
 - Pause & restart via `Docker desktop`.
-	- Restarting is when you will need the token.
+	- Restarting is when the token will be needed.
 - File system. 
-	- Only the mounted folder (see `docker run -v ...` command above) will be available from the host (read and write) 
+	- Only the mounted folder (see `docker run -v ...` command above) will be made available from the host to the container (read and write).
 	- Within the container, files will persist through pause & restart. This includes the `work` folder.
 	- At any time files can be downloaded from container to host. Do this as backup to avoid losing work.
+- Data sets.
+	- Data sets for `example 5` are linked into the corresponding notebook; [GeoJSON_demo](http://gaelforget.net/notebooks/GeoJSON_demo.html) or [GeoTIFF_demo](http://gaelforget.net/notebooks/GeoTIFF_demo.html).
+- Docker image.
+	- For the `2022, Dec. 13th` demo, [this branch](https://github.com/gaelforget/Notebooks/tree/v0p3p15e) of [JuliaClimate/Notebooks](https://juliaclimate.github.io/Notebooks/) was used for the [Docker image](https://hub.docker.com/layers/gaelforget/notebooks/2b215828dadb/images/sha256-9a57279295d6e1dd9f9513c021568e9fc7001ba89a06f857424969c227fc820b?context=repo).
