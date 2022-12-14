@@ -3,7 +3,7 @@
 
 - date : 2022/12/13
 - presenter : Gael Forget
-- video : "https://youtu.be/daNrJhPPgWg"
+- video : <https://youtu.be/daNrJhPPgWg>
 
 ## Summary
 
