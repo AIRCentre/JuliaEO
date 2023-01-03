@@ -155,12 +155,12 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: rgb(50, 125, 205);
+  color: rgb(50, 117, 205);
 }
 
 /* mouse over link */
 a:hover {
-  color: rgb(255, 238, 105);
+  color: rgb(197, 245, 5);
 }
 
 /* selected link */
