@@ -155,7 +155,7 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: yellowgreen;
+  color: rgb(50, 125, 205);
 }
 
 /* mouse over link */
