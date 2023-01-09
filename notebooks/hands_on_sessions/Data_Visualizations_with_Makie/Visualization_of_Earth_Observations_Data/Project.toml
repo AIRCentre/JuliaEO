@@ -1,0 +1,9 @@
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+GLMakie = "e9467ef8-e4e7-5192-8a1a-b1aee30e663a"
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+NCDatasets = "85f8d34a-cbdd-5861-8df4-14fed0d494ab"
+NetCDF = "30363a11-5582-574a-97bb-aa9a979735b9"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
+YAXArrays = "c21b50f5-aa40-41ea-b809-c0f5e47bfa5c"
+Zarr = "0a941bbe-ad1d-11e8-39d9-ab76183a1d99"
