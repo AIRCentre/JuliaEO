@@ -1,0 +1,14 @@
+[deps]
+ClimaCore = "d414da3d-4745-48bb-8d80-42e94e092884"
+ClimaCoreMakie = "908f55d8-4145-4867-9c14-5dad1a479e4d"
+GeoMakie = "db073c08-6b98-4ee5-b6a4-5efafb3259c6"
+GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+JSServe = "824d6782-a2ef-11e9-3a09-e5662e0c26f9"
+Makie = "ee78f7c6-11fb-53f2-987a-cfe4a2b5a57a"
+Pluto = "c3e4b0f8-55cb-11ea-2926-15256bba5781"
+WGLMakie = "276b4fcb-3e11-5398-bf8b-a0c2d153d008"
+
+[compat]
+JSServe = "2.0.6"
+WGLMakie = "0.8.5"
