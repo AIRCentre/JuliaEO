@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.19.19
 
 using Markdown
 using InteractiveUtils
@@ -304,18 +304,22 @@ md"## Flux.jl model
 model = Chain(
     # Convolution layers
     # 1st convolution: on nbands * 64 * 64 layers
-    Conv((7, 7), nbands => 32, relu; pad=(1, 1)),
+	InstanceNorm(nbands),
+    Conv((7, 7), nbands => 32, selu; pad=(1, 1)),
+	Conv((7, 7), 32 => 32, selu; pad=SamePad()),
     MaxPool((2, 2)),
     # 2nd convolution
-    Conv((7, 7), 32 => 32, relu; pad=(1, 1)),
+    Conv((7, 7), 32 => 32, selu; pad=(1, 1)),
+	Conv((7, 7), 32 => 32, selu; pad=SamePad()),
     MaxPool((2, 2)),
     # 3rd convolution
-    Conv((7, 7), 32 => 64, relu; pad=(1, 1)),
+    Conv((7, 7), 32 => 64, selu; pad=(1, 1)),
+	Conv((7, 7), 64 => 64, selu; pad=SamePad()),
     MaxPool((2, 2)),
     Dropout(0.25),
 	# reshape the array
     Flux.flatten,
-    Dense(64 * 4 * 4 => 500, relu),
+    Dense(64 * 4 * 4 => 500, selu),
     Dropout(0.25),
 	# Finish with `nclasses` on the axis for each observation
     Dense(500 => nclasses),
@@ -331,6 +335,9 @@ model(first(train_set)[1])
 
 # ╔═╡ efc23a0f-adda-4384-bed8-8c71b62ded1a
 md"*Load model and datasets onto GPU, if enabled*"
+
+# ╔═╡ 8777e432-77b4-447c-b244-382061ba3c90
+#model = model |> gpu
 
 # ╔═╡ 43ead7dd-c056-4098-81f8-c56874b97e4a
 md"*Define a loss function*
@@ -357,7 +364,7 @@ accuracy(x, y, model) = mean(Flux.onecold(cpu(model(x))) .== Flux.onecold(cpu(y)
 md"*Define number of epochs, learning rate and optimizer*"
 
 # ╔═╡ 36b23d05-5fce-498c-a86d-b31e2357bd3b
-nepochs = 10
+nepochs = 100
 
 # ╔═╡ 34a289ab-adeb-460a-8c9e-e29b78e3b431
 learning_rate = 0.001
@@ -407,8 +414,10 @@ for epoch_idx in 1:nepochs
 
    # If this is the best accuracy we've seen so far, save the model out
    if acc > best_acc
-       @info(" -> New best accuracy $acc ! Saving model out to mnist_conv.bson")
-       BSON.@save joinpath(savepath, "mnist_conv.bson") params=cpu.(Flux.params(model)) epoch_idx acc
+       @info(" -> New best accuracy $acc ! Saving model out to eo_classification_conv_$(acc).bson")
+       model_cpu = cpu(model)
+	   BSON.@save joinpath(savepath, "eo_classification_conv_$(acc).bson") model_cpu epoch_idx acc
+
        best_acc = acc
        last_improvement = epoch_idx
    end
@@ -433,6 +442,69 @@ end # let
 # ╔═╡ 60ef6c38-3776-4ed2-a5ee-b86b9532764a
 md"So this all seems to work. But does it actually train well?"
 
+# ╔═╡ e06e6464-edf7-46c2-b9fb-da9dc7541f7c
+train_set1_label = model(first(train_set)[1])
+
+
+# ╔═╡ fb84469e-2168-41fa-8f34-58ff138995be
+sum(train_set1_label, dims = 2)
+
+# ╔═╡ c51f5a3f-612a-4149-880e-5886e879b5d5
+yhat = model(test_set[1][:,:,:,1:10])
+
+# ╔═╡ 07cc8d4e-9102-44f7-8d6d-34cc1dbe0648
+
+
+# ╔═╡ ee7bee2c-44be-4fbd-8b40-54ccf6146f88
+for i = 1:size(yhat,2)
+	@show argmax(yhat[:,i]), argmax(test_set[2][:,i])
+end
+
+# ╔═╡ 04ba5ad8-df86-4741-9c86-14465b26cd07
+
+
+# ╔═╡ 823b75c4-a082-414e-bc29-8aec0622c788
+
+
+# ╔═╡ bdcef498-cdce-4797-99b8-f3ee99978f5d
+
+
+# ╔═╡ 5d7579e4-35e5-424e-b7b0-816fae151a92
+test_set[2]
+
+# ╔═╡ 8c941b6f-e375-4774-a73d-af106c1fa3e0
+
+
+# ╔═╡ 8bc4f83f-a9a1-43dc-9d4e-5fb51e0a43f9
+
+
+# ╔═╡ 006ff00e-ffb0-4df9-91a5-b157b9e4e3fd
+
+
+# ╔═╡ 7e8dbb38-d748-47ef-a959-c447d71aa233
+
+
+# ╔═╡ beb024cb-bd0b-4fee-9f19-4e80491d0485
+
+
+# ╔═╡ 4282d388-a534-4c91-b287-95990ebaa4ef
+
+
+# ╔═╡ 5d5fd0ad-c86f-4ce5-af5c-f9873bc59c23
+
+
+# ╔═╡ 01521173-2558-41ae-bfdc-18d4e335a013
+
+
+# ╔═╡ b32f8bf9-6223-4aae-8484-0b13c005393e
+first(train_set);
+
+# ╔═╡ 3f8403e2-2dd4-45f2-a9ef-964c7fb87baf
+
+
+# ╔═╡ 8ab852c8-6913-441e-a021-2f6b7e3347d2
+
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -440,6 +512,7 @@ BSON = "fbb218c0-5317-5bc6-957e-2ee96dd4b1f0"
 Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
 JuliennedArrays = "5cadff95-7770-533d-a838-a1bf817ee6e0"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 Rasters = "a3a2b9e3-a471-40c9-b274-f788e487c689"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 
@@ -456,9 +529,9 @@ StatsBase = "~0.33.21"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.0"
+julia_version = "1.8.2"
 manifest_format = "2.0"
-project_hash = "1e2551166cb7622a3bb70ace15d29f059337a309"
+project_hash = "98e49fd60b44d93706299a8d14355e3439c87bf7"
 
 [[deps.ASCIIrasters]]
 git-tree-sha1 = "0cb0046798af8ac8561334c5a2a31f015e53c2b1"
@@ -1699,7 +1772,7 @@ version = "1.10.0"
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
-version = "1.10.0"
+version = "1.10.1"
 
 [[deps.TensorCore]]
 deps = ["LinearAlgebra"]
@@ -2106,6 +2179,7 @@ version = "1.4.1+0"
 # ╟─25825628-463e-4449-97be-94e1608e1476
 # ╠═19c1f3ee-44b7-48c3-815c-13acf02d6a92
 # ╟─efc23a0f-adda-4384-bed8-8c71b62ded1a
+# ╠═8777e432-77b4-447c-b244-382061ba3c90
 # ╟─43ead7dd-c056-4098-81f8-c56874b97e4a
 # ╠═cafca1df-3059-4391-8c37-e600c77e0a5b
 # ╠═965303a0-06ac-49e5-9d3f-83e4a9faa861
@@ -2120,5 +2194,25 @@ version = "1.4.1+0"
 # ╟─f305afb6-f1b3-4e0d-a3fa-73105bf74c06
 # ╠═0195cfaf-a280-416f-a070-65b3ab2e3de1
 # ╠═60ef6c38-3776-4ed2-a5ee-b86b9532764a
+# ╠═e06e6464-edf7-46c2-b9fb-da9dc7541f7c
+# ╠═fb84469e-2168-41fa-8f34-58ff138995be
+# ╠═c51f5a3f-612a-4149-880e-5886e879b5d5
+# ╠═07cc8d4e-9102-44f7-8d6d-34cc1dbe0648
+# ╠═ee7bee2c-44be-4fbd-8b40-54ccf6146f88
+# ╠═04ba5ad8-df86-4741-9c86-14465b26cd07
+# ╠═823b75c4-a082-414e-bc29-8aec0622c788
+# ╠═bdcef498-cdce-4797-99b8-f3ee99978f5d
+# ╠═5d7579e4-35e5-424e-b7b0-816fae151a92
+# ╠═8c941b6f-e375-4774-a73d-af106c1fa3e0
+# ╠═8bc4f83f-a9a1-43dc-9d4e-5fb51e0a43f9
+# ╠═006ff00e-ffb0-4df9-91a5-b157b9e4e3fd
+# ╠═7e8dbb38-d748-47ef-a959-c447d71aa233
+# ╠═beb024cb-bd0b-4fee-9f19-4e80491d0485
+# ╠═4282d388-a534-4c91-b287-95990ebaa4ef
+# ╠═5d5fd0ad-c86f-4ce5-af5c-f9873bc59c23
+# ╠═01521173-2558-41ae-bfdc-18d4e335a013
+# ╠═b32f8bf9-6223-4aae-8484-0b13c005393e
+# ╠═3f8403e2-2dd4-45f2-a9ef-964c7fb87baf
+# ╠═8ab852c8-6913-441e-a021-2f6b7e3347d2
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
