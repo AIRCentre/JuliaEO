@@ -1,0 +1,6 @@
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DiskArrays = "3c3547ce-8d99-4f5e-a174-61eb10b00ae3"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+YAXArrays = "c21b50f5-aa40-41ea-b809-c0f5e47bfa5c"
+Zarr = "0a941bbe-ad1d-11e8-39d9-ab76183a1d99"

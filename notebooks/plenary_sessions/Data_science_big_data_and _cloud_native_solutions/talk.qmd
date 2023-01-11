@@ -1,0 +1,360 @@
+---
+title: "Cloud-native processing of large EO raster data"
+author: 
+  - Fabian Gans
+  - Felix Cremer
+format: 
+  revealjs:
+    theme: moon
+logo: ./plots/MPI_BGC_wide_E_green_cmyk.png
+footer: "JuliaEO Jan 12"
+width: 1200
+height: 800
+---
+
+## TOC
+
+1. N-dimensional data and the cloud
+2. DiskArrays.jl for handling high-latency n-dimensional arrays
+3. YAXArrays.jl Efficient processing of N-dimensional data
+4. Aggregations
+5. Future plans
+
+
+## Our study object
+
+![](./plots/single.png){style="border-style: none;height:650px"}
+
+## Our study object
+
+![](./plots/singlets.png){style="border-style: none;height:650px"}
+
+## Our study object
+
+![](./plots/singlemap.png){style="border-style: none;height:650px"}
+
+## Our study object
+
+![](./plots/singlebox.png){style="border-style: none;height:650px"}
+
+
+## Problems
+
+- data does not fit into computer memory
+  - read data on demand
+- parallel read and *write*
+  - necessary for large data
+- disk space is not "3D" but linear
+  - close data points are not close on disk
+- compression prevents random access
+
+
+## Chunked arrays
+
+- divide data into hyper-rectangles and store close data close together
+- possible with NetCDF, HDF5
+- new formats like Zarr, TileDB, HDF5-Cloud, cloud-optimized GeoTIFF
+- compression is important in cloud-applications
+
+## Chunked arrays
+
+![](./plots/annual.png){style="border-style: none;height:650px"}
+
+## Chunked arrays
+
+![](./plots/chunked_terminal.png){style="border-style: none;height:650px"}
+
+## Chunked arrays
+
+![](./plots/chunked.png){style="border-style: none;height:650px"}
+
+## Accessing maps
+
+![](./plots/chunked_hlmap6.png){style="border-style: none;height:650px"}
+
+## Accessing time series
+
+![](./plots/chunked_hl3.png){style="border-style: none;height:650px"}
+
+## Aim
+
+- efficient access to these chunked arrays
+- efficient basic computations
+- avoid `AbstractArray` fallbacks at any cost
+- the [AbstractArray interface](https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-array) is built on fast single element access
+
+## DiskArrays.jl 
+
+- provides an `AbstractArray` implementation for slow arrays
+- tries to exactly reproduce Abstractarray indexing behavior
+- either on disk or even in the cloud
+- and provides primitives to handle n-dimensional chunks
+- as an interface to chunked arrays
+- is backend for ArchGDAL.jl, NetCDF.jl, Zarr.jl, GribDatasets.jl
+
+## DiskArrays.jl
+
+```{julia}
+using Pkg
+Pkg.activate(".")
+nothing
+```
+
+```{julia}
+#| echo: true
+using DiskArrays, Zarr
+g = zopen("gs://cmip6/CMIP6/HighResMIP/CMCC/CMCC-CM2-HR4/highresSST-present/r1i1p1f1/6hrPlev/psl/gn/v20170706")
+eachchunk(g["psl"])
+```
+
+## We can create strange views
+
+```{julia}
+#| echo: true
+psl_steps = view(g["psl"],1:2:288,:,1:3:5000)
+cs = eachchunk(psl_steps)
+```
+
+
+## Where chunks are irregular
+
+```{julia}
+#| echo: true
+size.(CartesianIndices.(cs))
+```
+
+## Or extract a number of annual slices
+
+```{julia}
+#| echo: true
+lonlats = [CartesianIndex(rand(1:288),rand(1:192)) for _ in 1:1000]
+```
+
+## Or extract a number of annual slices
+
+```{julia}
+#| echo: true
+g["psl"][lonlats,1:365]
+```
+
+:::aside:::
+This only makes a single getindex call into the remote array
+:::
+
+## DiskArrays.jl
+
+A typical workflow
+
+```{julia}
+#| echo: true
+for I in eachchunk(psl_steps)
+    println("Doing something with chunk $I")
+end
+```
+
+## DiskArrays.jl
+
+Reductions
+
+```{julia}
+#| echo: true
+using Statistics
+@time mean(psl_steps,dims=3)
+```
+
+:::aside
+and broadcast (shown already by Rafael on day 1)
+:::
+
+## Beyond broadcast and reduction
+
+- what about mapslices
+- about multivariate operations, moving windows
+- and `parallelism`
+- YAXArrays.jl is an attempt to solve some of these
+
+## What is YAXArrays.jl
+
+- yet another library for arrays with dimension labels and values
+- but defaulting for out-of core from the start
+- feels a bit more awkward to use and less documented than Rasters.jl
+- but with a lot of work invested for large-scale processing problems
+
+## An example
+
+```{julia}
+#| echo: true
+using YAXArrays, Zarr
+ds = open_dataset("./esdc_subset2.zarr")
+```
+
+## An example
+
+```{julia}
+#| echo: true
+using YAXArrays, Zarr
+ds = open_dataset("./esdc_subset2.zarr")
+c = Cube(ds)
+```
+
+## An example
+
+```{julia}
+#| echo: true
+using Statistics
+apply_median(x) = all(isnan,x) ? missing : median(filter(!isnan,x))
+@time medians = mapslices(apply_median, c, dims="time", max_cache=1e9)
+```
+
+## An example
+
+```{julia}
+#| echo: true
+#| #| label: fig-parametric
+#| fig-cap: "Parametric Plots"
+using Plots
+myplot(c) = heatmap(c.lon.values,reverse(c.lat.values),c[:,size(c,2):-1:1]')
+myplot(medians[var = "gross"])
+```
+
+## What happens in the background
+
+![](./plots/chunked.png){style="border-style: none;height:650px"}
+
+## What happens in the background
+
+![](./plots/chunked_zoom.png){style="border-style: none;height:650px"}
+
+## Outer loop: Chunks
+
+![](./plots/chunked_zoom_hl3.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl11.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl12.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl13.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl14.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl15.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl16.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl150.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl151.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl152.png){style="border-style: none;height:650px"}
+
+## Outer loop: Next chunk
+
+![](./plots/chunked_zoom_hl2.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl21.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl22.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl23.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl24.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl25.png){style="border-style: none;height:650px"}
+
+## Inner loop: Grid cells
+
+![](./plots/chunked_hl26.png){style="border-style: none;height:650px"}
+
+## Going parallel
+
+![](./plots/chunked_hlpar.png){style="border-style: none;height:650px"}
+
+## Going parallel
+
+![](./plots/chunked_hlpar1.png){style="border-style: none;height:650px"}
+
+## Going parallel
+
+![](./plots/chunked_hlpar2.png){style="border-style: none;height:650px"}
+
+## Going parallel
+
+![](./plots/chunked_hlpar3.png){style="border-style: none;height:650px"}
+
+## An example
+
+- much more complex workflows possible
+- see hands-on tomorrow
+- general philosophy:
+  - the user comes with a function
+  - and YAXArrays maps it over data on disk and writes output
+
+What is happening in the background?
+
+## YAXArrays provides
+
+- efficient out-of core mapslices functionality
+- map any function over any combination of dimensions in you dataset
+- interaction with DiskArrays -> aware of physical chunks
+- multivariate workflows, multiple inputs/outputs
+
+It does not (yet) provide:
+
+- lazy function application over slices
+- direct coupling to Rasters.jl/DimensionalData.jl
+- but there are conversion functions
+
+## Table-interface
+
+```{julia}
+tab = CubeTable(gpp = ds.gross_primary_productivity, tair = ds.air_temperature_2m)
+```
+
+## Table-interface
+
+```{julia}
+using DataFrames
+tab = CubeTable(gpp = ds.gross_primary_productivity, tair = ds.air_temperature_2m)
+DataFrame(tab[32])
+```
+
+- defaults to building lazy iterators over sub-tables, for digestion with OnlineStats
+- or coupling to `DTable` from Dagger
+
+## The Future - DiskArrayEngine.jl
+
+- Rasters.jl is doing many basic things better than YAXArrays
+- impossible to maintain such a large set of functionality
+- will concentrate on the processing part
+- recently started DiskArrayEngine.jl
+- will provide YAXArrays functionality and more on DiskArray level
+- lazy general moving window operations on gridded chunked data
+- not meant for direct user interaction
