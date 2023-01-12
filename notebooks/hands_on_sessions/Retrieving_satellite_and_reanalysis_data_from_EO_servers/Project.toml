@@ -1,0 +1,7 @@
+[deps]
+CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
+DelimitedFiles = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+DrWatson = "634d3b9d-ee7a-5ddf-bec9-22491ea816e1"
+GeoRegions = "b001f823-fa75-4bff-bf55-6610c8f3688a"
+NASAPrecipitation = "a018b980-0677-41c0-b9a4-7f34595c2b14"
+NCDatasets = "85f8d34a-cbdd-5861-8df4-14fed0d494ab"
