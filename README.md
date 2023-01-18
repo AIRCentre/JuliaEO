@@ -10,11 +10,9 @@ Repo for resources such as:
 A folder with documents can be found above. It includes instructions on how to use Docker in the context of this workshop:
 + [Computer Configuration](https://github.com/AIRCentre/JuliaEO/blob/5d5d1071fdac2bd65e2dc2471d74976432321280/docs/README-Docker-Intro.md "Docker Image")
 
-### Datasets
-You should be able to run most notebooks outside a Docker container. In case you aren't, try the following (default) [Docker image](https://doi.org/10.7910/DVN/OYBLGK). Some sessions might use different imahes, whcih will be documented with the session
-
 ### Notebooks
 Notebooks can be found above within the *notebooks* folder, organised by session.
+You should be able to run most notebooks outside a Docker container. In case you aren't, try the following (default) [Docker image](https://doi.org/10.7910/DVN/OYBLGK). Some sessions might use different imahes, whcih will be documented with the session
 
 <details>
  <summary> Simple Notebook Listing </summary>
@@ -94,5 +92,4 @@ This is not necessarily a complete or up-to-date list. It notably omits notebook
 
 ### Datasets
 [Datasets](https://github.com/gdcc/Dataverse.jl#readme "Dataverse archive")
-
 
