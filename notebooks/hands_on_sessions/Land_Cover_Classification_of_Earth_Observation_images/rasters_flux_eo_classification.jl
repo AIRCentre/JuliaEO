@@ -18,7 +18,7 @@ end
 begin
 	using Rasters, Flux, Plots, StatsBase
 	using BSON, Printf, JuliennedArrays
-	using PlutoUI
+	import PlutoUI, Downloads
 end
 
 # ╔═╡ 4b0b7995-4109-4582-8520-cf45486e0612
@@ -28,57 +28,96 @@ md"# Land cover classification of tiff files with Rasters.jl and Flux.jl"
 md"Our dataset is made up of thousand of 64*64 images with 13 bands, that have been classified according to the type of land cover they contain"
 
 # ╔═╡ 69b04773-39ed-4b1c-9829-e867b2227c4b
-md"*Load the packages we need*"
+md"## Load Needed Packages"
 
 # ╔═╡ b3100fc3-9ca6-4236-b2d3-0227854724d1
-TableOfContents()
+PlutoUI.TableOfContents()
 
 # ╔═╡ bb374d60-443b-4003-b1f0-22fe15700409
-md"### Set some variables for the session"
+md"## Set Parameters for this Session
+
+The [EuroSAT data set](https://github.com/phelber/EuroSAT#readme) comes in two versions :
+
+- Small : RGB (133M)
+- Large : MS (2.8G)
+
+@article{helber2019eurosat,
+  title={Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification},
+  author={Helber, Patrick and Bischke, Benjamin and Dengel, Andreas and Borth, Damian},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+  year={2019},
+  publisher={IEEE}
+}
+"
+
+# ╔═╡ 255c0623-12aa-4f6e-ac77-1ad37741075d
+@bind dataset_choice PlutoUI.Select(["RGB","MS"])
+
+# ╔═╡ 458e03cd-4f7d-47f8-9161-4477da0a57e8
+begin
+	doTraining_bind = @bind doTraining PlutoUI.Select(0:2)
+	md"""The more we train the model the better it should get. 
+	
+	But the longer it will take to train.
+	
+	We start we do no training at all (level 0), and suggest you try level 1 next, then level 2 to finish.
+	
+	training level : $(doTraining_bind)
+	"""
+end
+
+# ╔═╡ 1e871eb6-a447-4f61-b020-1e92a57979df
+if dataset_choice=="RGB"
+	data_url="http://madm.dfki.de/files/sentinel/EuroSAT.zip"
+	data_path0=joinpath(tempdir(),"rasters_flux_eo_classification")
+	data_path1="2750"
+	band_names = [:B02_Blue,:B03_Green,:B04_Red]
+	selected_bands = [:B02_Blue, :B03_Green, :B04_Red]
+else
+	data_url="http://madm.dfki.de/files/sentinel/EuroSATallBands.zip"
+	data_path0=joinpath(tempdir(),"rasters_flux_eo_classification")
+	data_path1=joinpath("ds","images","remote_sensing","otherDatasets","sentinel_2","tif")
+	band_names = [:Aerosols,:B02_Blue,:B03_Green,:B04_Red,
+	  	:B05_Red_edge,:B06_Red_edge,:B07_Red_edge,:B08_NIR,:B08A_Red_edge,
+		:B09_Water_vapor,:B10_Cirrus,:B11_SWIR,:B12_SWIR]
+	selected_bands = [:B02_Blue, :B03_Green, :B04_Red, :B08_NIR]
+end
 
 # ╔═╡ f2c0624a-4829-4acf-b61d-868a311aff2f
 md"*Choose the number of land cover classes we will identify*"
 
-# ╔═╡ 5059ef97-7a3b-4f9e-9564-c57ac3f110f0
-nclasses = 5
-
 # ╔═╡ dc83b90e-8e5f-4971-9410-e947c483fe42
 md"Lets manually define the band names from the papter - they are not stored in the files and it's good to see what our data means in plot"
-
-# ╔═╡ 25c96b6d-b5e1-4d6a-8503-a3c6e4d7bd1f
-band_names = [
-#  :Aerosols,
-  :B02_Blue,
-  :B03_Green,
-  :B04_Red,
-#  :B05_Red_edge,
-#  :B06_Red_edge,
-#  :B07_Red_edge,
-#  :B08_NIR,
-#  :B08A_Red_edge,
-#  :B09_Water_vapor,
-#  :B10_Cirrus,
-#  :B11_SWIR,
-#  :B12_SWIR,
-]
 
 # ╔═╡ e7a65846-39dd-44ca-985b-aa236f86a2a2
 md"*Choose the fraction of samples to use, and the fraction of those for testing and validation*"
 
 # ╔═╡ a96f2d55-95af-4089-b4b9-e700a5d59322
 md"""
-### Find our tiff files
+## List tiff files
+
+!!! warning
+    This step make take a little while if the data needs to be downloaded. This should happen only once unless the data files are removed. Download will take 20 times as long for the `MS` data sets as compared with the `RGB` data set.
 """
 
 # ╔═╡ 9d01a67f-5a8d-4cff-9122-698abb3d18b0
 md"*Set the path where the downloaded tif files are stored*"
 
-# ╔═╡ 01131068-b4ec-4492-8310-7e1b953f3940
-#data_path = "/home/jovyan/data/2750"
-data_path = "2750"
+# ╔═╡ e2e7de02-8fd2-449a-85f6-fb1b128b828e
+begin
+	data_path = joinpath(data_path0,data_path1)
+	if !isdir(data_path)
+		!isdir(data_path0) ? mkdir(data_path0) : nothing
+		
+		tmp_path=joinpath(data_path0,basename(data_url))
+		!isfile(tmp_path) ? Downloads.download(data_url,tmp_path) : nothing
+		run(`unzip $(tmp_path) -d $(data_path0)`)
+	end
+	data_path
+end
 
-# ╔═╡ fe84d42f-d900-4709-9868-67487310be17
-readdir(data_path)
+# ╔═╡ 5059ef97-7a3b-4f9e-9564-c57ac3f110f0
+@bind nclasses PlutoUI.Select(1:length(readdir(data_path)),default=5)
 
 # ╔═╡ 400c0a19-5f12-47b8-b52d-9e9e08372209
 md"*Get class names from the names of the directories*"
@@ -100,7 +139,7 @@ file_paths = [p for class_path in class_paths for p in readdir(class_path; join=
 
 # ╔═╡ c6c6f1fd-33a2-4645-933b-e2267286e070
 md"""
-## Plot some of the files
+## Plot File Samples
 
 *Load and plot one of the rasters to see what we have.*
 """
@@ -126,8 +165,8 @@ md"""
 *Lets choose the most suitable ones*
 """
 
-# ╔═╡ 5f64b5cb-e8ed-417d-89f0-0433476ad817
-selected_bands = [:B02_Blue, :B03_Green, :B04_Red]#, :B08_NIR]
+# ╔═╡ 5688ce32-c0fe-4598-b351-2f5cdaddb3dc
+selected_bands
 
 # ╔═╡ ce0b128c-62af-47e4-8545-b65ade110bf5
 md"*Also calculate an* `nbands` *variable for use in our flux model later*"
@@ -142,7 +181,7 @@ md"*And index with them useing the* `Band` *dimension and the* `At` *selector*"
 r1[Band=At(selected_bands)] |> plot 
 
 # ╔═╡ 082e3921-a028-4bb7-833b-609862a36792
-md"### Sample some files for training and test data"
+md"## Training and Test Data Samples"
 
 # ╔═╡ 592c3164-ca43-4cd7-89c0-41c6ab226c22
 sample_prop = 0.1
@@ -276,7 +315,7 @@ plot(data.validate.rasters[50])
 
 # ╔═╡ 16d97eb7-bc0c-4e40-8aaf-869b0847619f
 md"""
-### Build Flux.jl ready datasets for training and testing
+## Format Data to Train/Test Model
 """
 
 # ╔═╡ 105793e6-6fac-49d9-a108-32ed9a7849af
@@ -317,7 +356,7 @@ test_labels = Flux.onehotbatch(data.test.labels, 1:nclasses)
 test_set = (test_data, test_labels) # |> gpu
 
 # ╔═╡ a7cbde10-d746-412a-a91a-58ec9edaadc1
-md"## Flux.jl model
+md"## Build Flux.jl model
 
 *Define a Flux.jl Convolution Nerual Network (CNN) model:*"
 
@@ -393,8 +432,8 @@ learning_rate = 0.001
 # ╔═╡ ed0edb59-e229-4cda-8ba1-b54a8496cc08
 opt = Adam(learning_rate)
 
-# ╔═╡ ea2c128b-dd52-4a29-8faa-46dcb3ae10f7
-@bind doTraining Select(0:2)
+# ╔═╡ 70455ed2-64c3-40dc-8b7b-ed1c63d2af14
+md"""## Train/Test Model"""
 
 # ╔═╡ a2e4f62d-7e13-4394-8287-5a4a935f6edd
 md"*First, lets try a single training iteration*"
@@ -496,6 +535,7 @@ end
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
 BSON = "fbb218c0-5317-5bc6-957e-2ee96dd4b1f0"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
 JuliennedArrays = "5cadff95-7770-533d-a838-a1bf817ee6e0"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
@@ -520,7 +560,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.5"
 manifest_format = "2.0"
-project_hash = "ec5a6a2fb09a9ba865c7690e4adc8c4f6b05339a"
+project_hash = "e92a3925b2704f3e7221db2b4ab598d6d85bee4f"
 
 [[deps.ASCIIrasters]]
 git-tree-sha1 = "0cb0046798af8ac8561334c5a2a31f015e53c2b1"
@@ -2161,19 +2201,20 @@ version = "1.4.1+0"
 # ╔═╡ Cell order:
 # ╟─4b0b7995-4109-4582-8520-cf45486e0612
 # ╟─6a919b4c-100b-4322-8d7a-58fd6aa3e58e
-# ╟─69b04773-39ed-4b1c-9829-e867b2227c4b
+# ╠═69b04773-39ed-4b1c-9829-e867b2227c4b
 # ╠═63e20ecc-8cfe-11ed-2716-63cd8d825073
 # ╟─b3100fc3-9ca6-4236-b2d3-0227854724d1
 # ╟─bb374d60-443b-4003-b1f0-22fe15700409
+# ╟─255c0623-12aa-4f6e-ac77-1ad37741075d
+# ╟─458e03cd-4f7d-47f8-9161-4477da0a57e8
+# ╟─1e871eb6-a447-4f61-b020-1e92a57979df
 # ╟─f2c0624a-4829-4acf-b61d-868a311aff2f
-# ╠═5059ef97-7a3b-4f9e-9564-c57ac3f110f0
+# ╟─5059ef97-7a3b-4f9e-9564-c57ac3f110f0
 # ╟─dc83b90e-8e5f-4971-9410-e947c483fe42
-# ╠═25c96b6d-b5e1-4d6a-8503-a3c6e4d7bd1f
 # ╟─e7a65846-39dd-44ca-985b-aa236f86a2a2
 # ╟─a96f2d55-95af-4089-b4b9-e700a5d59322
 # ╟─9d01a67f-5a8d-4cff-9122-698abb3d18b0
-# ╠═01131068-b4ec-4492-8310-7e1b953f3940
-# ╠═fe84d42f-d900-4709-9868-67487310be17
+# ╟─e2e7de02-8fd2-449a-85f6-fb1b128b828e
 # ╟─400c0a19-5f12-47b8-b52d-9e9e08372209
 # ╠═9a7e9cdf-4b2f-479d-8b76-cad86614c693
 # ╟─47bba161-0a09-4e6a-bb21-b01d142be985
@@ -2181,17 +2222,17 @@ version = "1.4.1+0"
 # ╟─dd8ac167-1416-427c-b87d-0522c61d0cd9
 # ╠═3c627000-8f24-4ca0-a597-e94b00ea745a
 # ╟─c6c6f1fd-33a2-4645-933b-e2267286e070
-# ╠═169daaaf-666a-4cdd-b934-1f59754f530c
+# ╟─169daaaf-666a-4cdd-b934-1f59754f530c
 # ╟─9d3177b2-fc16-4fad-988b-ba6a701361ee
 # ╠═7931eda0-8391-42c5-9605-530652c2fa23
 # ╠═3fd5528f-63a2-4ab5-ae87-ed8e6ffc89a1
 # ╟─36dbaf99-0ae2-4ae2-ac60-c16797962c4a
-# ╠═5f64b5cb-e8ed-417d-89f0-0433476ad817
+# ╟─5688ce32-c0fe-4598-b351-2f5cdaddb3dc
 # ╟─ce0b128c-62af-47e4-8545-b65ade110bf5
 # ╠═567a9461-93ad-4794-baf6-5c19af8bff7d
 # ╟─e4e56ef2-7749-4f58-8949-d367aa3733de
 # ╠═4337c5bd-82e2-401c-aedb-a5c054b1a32f
-# ╟─082e3921-a028-4bb7-833b-609862a36792
+# ╠═082e3921-a028-4bb7-833b-609862a36792
 # ╠═592c3164-ca43-4cd7-89c0-41c6ab226c22
 # ╠═a7c13fa5-a8eb-455b-9171-20008edb58bf
 # ╠═1ca4ee45-708b-4d46-a9be-501778a1cffa
@@ -2228,7 +2269,7 @@ version = "1.4.1+0"
 # ╠═105793e6-6fac-49d9-a108-32ed9a7849af
 # ╟─0b789ff3-49c4-419d-a940-dd7d5bf49de9
 # ╠═d5613844-e4fb-4057-bb30-997035e112ba
-# ╠═55690763-1cfb-4c0c-9506-295a4cf0582e
+# ╟─55690763-1cfb-4c0c-9506-295a4cf0582e
 # ╠═8be923b3-58af-439f-b20a-78e92b9d221c
 # ╟─d4cf3d4e-7e1d-49ce-8fb5-8fbe6852e42a
 # ╠═b1b88fc6-8082-4bd8-811b-fded1d04d13f
@@ -2236,7 +2277,7 @@ version = "1.4.1+0"
 # ╠═d1dee3bc-7120-49ca-86ba-1c155847941b
 # ╠═3ae669e1-16ee-49d7-81b5-42124ee8bac7
 # ╠═f887d0d0-d297-46f6-8a42-adfdac36e2d3
-# ╟─a7cbde10-d746-412a-a91a-58ec9edaadc1
+# ╠═a7cbde10-d746-412a-a91a-58ec9edaadc1
 # ╠═59010b93-03d7-4fe7-9bf6-741d320ee0ff
 # ╟─25825628-463e-4449-97be-94e1608e1476
 # ╠═19c1f3ee-44b7-48c3-815c-13acf02d6a92
@@ -2251,7 +2292,7 @@ version = "1.4.1+0"
 # ╠═36b23d05-5fce-498c-a86d-b31e2357bd3b
 # ╠═34a289ab-adeb-460a-8c9e-e29b78e3b431
 # ╠═ed0edb59-e229-4cda-8ba1-b54a8496cc08
-# ╠═ea2c128b-dd52-4a29-8faa-46dcb3ae10f7
+# ╟─70455ed2-64c3-40dc-8b7b-ed1c63d2af14
 # ╟─a2e4f62d-7e13-4394-8287-5a4a935f6edd
 # ╠═96438c0c-3b71-4a5e-8181-40fa55e3740b
 # ╠═146adf5b-b7d4-456d-9b4f-fe20b1b67aed
