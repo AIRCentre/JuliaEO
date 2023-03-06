@@ -25,7 +25,18 @@ end
 md"# Land cover classification of tiff files with Rasters.jl and Flux.jl"
 
 # ╔═╡ 6a919b4c-100b-4322-8d7a-58fd6aa3e58e
-md"Our dataset is made up of thousand of 64*64 images with 13 bands, that have been classified according to the type of land cover they contain"
+md"Here we use an image data set to train a convolutional neural network (CNN).
+
+The dataset is made up of thousand of 64*64 images that have been classified according to the type of land cover they contain.
+
+@article{helber2019eurosat,
+  title={Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification},
+  author={Helber, Patrick and Bischke, Benjamin and Dengel, Andreas and Borth, Damian},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+  year={2019},
+  publisher={IEEE}
+}
+"
 
 # ╔═╡ 69b04773-39ed-4b1c-9829-e867b2227c4b
 md"## Load Needed Packages"
@@ -38,16 +49,8 @@ md"## Set Parameters for this Session
 
 The [EuroSAT data set](https://github.com/phelber/EuroSAT#readme) comes in two versions :
 
-- Small : RGB (133M)
-- Large : MS (2.8G)
-
-@article{helber2019eurosat,
-  title={Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification},
-  author={Helber, Patrick and Bischke, Benjamin and Dengel, Andreas and Borth, Damian},
-  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
-  year={2019},
-  publisher={IEEE}
-}
+- Small : RGB (133M, 3 bands)
+- Large : MS (2.8G, 13 bands)
 "
 
 # ╔═╡ 255c0623-12aa-4f6e-ac77-1ad37741075d
@@ -55,12 +58,10 @@ The [EuroSAT data set](https://github.com/phelber/EuroSAT#readme) comes in two v
 
 # ╔═╡ 458e03cd-4f7d-47f8-9161-4477da0a57e8
 begin
-	doTraining_bind = @bind doTraining PlutoUI.Select(0:2)
-	md"""The more we train the model the better it should get. 
+	doTraining_bind = @bind doTraining PlutoUI.Select(0:2, default=1)
+	md"""The more we train the model the better it should get. But the longer it will take to train. 
 	
-	But the longer it will take to train.
-	
-	We start we do no training at all (level 0), and suggest you try level 1 next, then level 2 to finish.
+	We suggest you try level 1 (default) before level 2. As an exercise, try to improve convergence. Sometimes increase the number of training data or the number of selected bands helps. 
 	
 	training level : $(doTraining_bind)
 	"""
@@ -361,31 +362,36 @@ md"## Build Flux.jl model
 *Define a Flux.jl Convolution Nerual Network (CNN) model:*"
 
 # ╔═╡ 59010b93-03d7-4fe7-9bf6-741d320ee0ff
-model = Chain(
-    # Convolution layers
-    # 1st convolution: on nbands * 64 * 64 layers
-	InstanceNorm(nbands),
-    Conv((7, 7), nbands => 32, selu; pad=(1, 1)),
-	Conv((7, 7), 32 => 32, selu; pad=SamePad()),
-    MaxPool((2, 2)),
-    # 2nd convolution
-    Conv((7, 7), 32 => 32, selu; pad=(1, 1)),
-	Conv((7, 7), 32 => 32, selu; pad=SamePad()),
-    MaxPool((2, 2)),
-    # 3rd convolution
-    Conv((7, 7), 32 => 64, selu; pad=(1, 1)),
-	Conv((7, 7), 64 => 64, selu; pad=SamePad()),
-    MaxPool((2, 2)),
-    Dropout(0.25),
-	# reshape the array
-    Flux.flatten,
-    Dense(64 * 4 * 4 => 500, selu),
-    Dropout(0.25),
-	# Finish with `nclasses` on the axis for each observation
-    Dense(500 => nclasses),
-    # Nicer properties for crossentropy loss
-    softmax,
-)
+begin
+	doTraining
+	test_set
+	
+	model = Chain(
+	    # Convolution layers
+	    # 1st convolution: on nbands * 64 * 64 layers
+		InstanceNorm(nbands),
+	    Conv((7, 7), nbands => 32, selu; pad=(1, 1)),
+		Conv((7, 7), 32 => 32, selu; pad=SamePad()),
+	    MaxPool((2, 2)),
+	    # 2nd convolution
+	    Conv((7, 7), 32 => 32, selu; pad=(1, 1)),
+		Conv((7, 7), 32 => 32, selu; pad=SamePad()),
+	    MaxPool((2, 2)),
+	    # 3rd convolution
+	    Conv((7, 7), 32 => 64, selu; pad=(1, 1)),
+		Conv((7, 7), 64 => 64, selu; pad=SamePad()),
+	    MaxPool((2, 2)),
+	    Dropout(0.25),
+		# reshape the array
+	    Flux.flatten,
+	    Dense(64 * 4 * 4 => 500, selu),
+	    Dropout(0.25),
+		# Finish with `nclasses` on the axis for each observation
+	    Dense(500 => nclasses),
+	    # Nicer properties for crossentropy loss
+	    softmax,
+	)
+end
 
 # ╔═╡ 25825628-463e-4449-97be-94e1608e1476
 md"*Test that the model runs on our training data*"
@@ -427,7 +433,7 @@ md"*Define number of epochs, learning rate and optimizer*"
 nepochs = 10
 
 # ╔═╡ 34a289ab-adeb-460a-8c9e-e29b78e3b431
-learning_rate = 0.001
+learning_rate = 0.0005
 
 # ╔═╡ ed0edb59-e229-4cda-8ba1-b54a8496cc08
 opt = Adam(learning_rate)
@@ -439,10 +445,29 @@ md"""## Train/Test Model"""
 md"*First, lets try a single training iteration*"
 
 # ╔═╡ 96438c0c-3b71-4a5e-8181-40fa55e3740b
-doTraining>0 ? Flux.train!(loss, Flux.params(model), train_set, opt) : nothing
+begin
+	acc0 = accuracy(test_set..., model)	
+	
+	if doTraining==0
+		acc1=acc0
+	else
+		Flux.train!(loss, Flux.params(model), train_set, opt)
+		acc1 = accuracy(test_set..., model)
+	end
+	
+	[acc0 acc1]
+end
 
 # ╔═╡ 146adf5b-b7d4-456d-9b4f-fe20b1b67aed
-Flux.testmode!(model, true)
+md"*Save result from initial training*"
+
+# ╔═╡ 2c4d4c59-cd0f-4d70-94b4-7778adeab464
+begin
+	savepath = "."
+	model_cpu = cpu(model)
+	model_best = [deepcopy(model_cpu)]
+	BSON.@save joinpath(savepath, "eo_classification_conv_$(acc1).bson") model_cpu
+end
 
 # ╔═╡ f305afb6-f1b3-4e0d-a3fa-73105bf74c06
 md"*Now we can run a training loop*"
@@ -450,17 +475,16 @@ md"*Now we can run a training loop*"
 # ╔═╡ 0195cfaf-a280-416f-a070-65b3ab2e3de1
 if doTraining>1
 	last_improvement = 0
-	best_acc = 0.0
-	savepath = "."
+	best_acc = acc1 #to ensure synchronization
 
 for epoch_idx in 1:nepochs
    
-	Flux.testmode!(model, false)
+   #Flux.testmode!(model, false)
 
    # Train for a single epoch
    Flux.train!(loss, Flux.params(model), train_set, opt)
 
-   Flux.testmode!(model, true)
+   #Flux.testmode!(model, true)
   
    # Terminate on NaN
    if anynan(Flux.params(model))
@@ -483,7 +507,8 @@ for epoch_idx in 1:nepochs
        @info(" -> New best accuracy $acc ! Saving model out to eo_classification_conv_$(acc).bson")
        model_cpu = cpu(model)
 	   BSON.@save joinpath(savepath, "eo_classification_conv_$(acc).bson") model_cpu epoch_idx acc
-
+	   model_best[1]=deepcopy(model_cpu)
+	   
        best_acc = acc
        last_improvement = epoch_idx
    end
@@ -503,33 +528,32 @@ for epoch_idx in 1:nepochs
    end
 end
 
-end # let
+else
+	acc=acc1
+end
 
 # ╔═╡ 60ef6c38-3776-4ed2-a5ee-b86b9532764a
-md"So this all seems to work. But does it actually train well?"
+md"## Assess Training Results
 
-# ╔═╡ e06e6464-edf7-46c2-b9fb-da9dc7541f7c
-train_set1_label = model(first(train_set)[1])
+So this all seems to work. But does it actually train well?"
+
+# ╔═╡ 9c1eced5-e58e-4078-87e9-184e2a510887
+train_set1_label = model_best[1](first(train_set)[1])
 
 # ╔═╡ fb84469e-2168-41fa-8f34-58ff138995be
 sum(train_set1_label, dims = 2)
 
 # ╔═╡ 5638670c-017f-41b8-a24a-63762eb0ac32
 begin
-	y_hat=model(test_set[1].data)
+	acc
+	y_hat=model_best[1](test_set[1].data)
 	y_ref=test_set[2]
 end
 
 # ╔═╡ ee7bee2c-44be-4fbd-8b40-54ccf6146f88
-for i = 1:size(y_hat,2)
+for i = 1:10:size(y_hat,2)
 	@show argmax(y_hat[:,i]), argmax(y_ref[:,i])
 end
-
-# ╔═╡ 823b75c4-a082-414e-bc29-8aec0622c788
-
-
-# ╔═╡ 8ab852c8-6913-441e-a021-2f6b7e3347d2
-
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -560,7 +584,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.5"
 manifest_format = "2.0"
-project_hash = "e92a3925b2704f3e7221db2b4ab598d6d85bee4f"
+project_hash = "9e5060a95e3eae4486e4913cc8b0965d9f3f8a08"
 
 [[deps.ASCIIrasters]]
 git-tree-sha1 = "0cb0046798af8ac8561334c5a2a31f015e53c2b1"
@@ -2201,15 +2225,15 @@ version = "1.4.1+0"
 # ╔═╡ Cell order:
 # ╟─4b0b7995-4109-4582-8520-cf45486e0612
 # ╟─6a919b4c-100b-4322-8d7a-58fd6aa3e58e
-# ╠═69b04773-39ed-4b1c-9829-e867b2227c4b
+# ╟─69b04773-39ed-4b1c-9829-e867b2227c4b
 # ╠═63e20ecc-8cfe-11ed-2716-63cd8d825073
 # ╟─b3100fc3-9ca6-4236-b2d3-0227854724d1
 # ╟─bb374d60-443b-4003-b1f0-22fe15700409
 # ╟─255c0623-12aa-4f6e-ac77-1ad37741075d
 # ╟─458e03cd-4f7d-47f8-9161-4477da0a57e8
-# ╟─1e871eb6-a447-4f61-b020-1e92a57979df
+# ╠═1e871eb6-a447-4f61-b020-1e92a57979df
 # ╟─f2c0624a-4829-4acf-b61d-868a311aff2f
-# ╟─5059ef97-7a3b-4f9e-9564-c57ac3f110f0
+# ╠═5059ef97-7a3b-4f9e-9564-c57ac3f110f0
 # ╟─dc83b90e-8e5f-4971-9410-e947c483fe42
 # ╟─e7a65846-39dd-44ca-985b-aa236f86a2a2
 # ╟─a96f2d55-95af-4089-b4b9-e700a5d59322
@@ -2220,7 +2244,7 @@ version = "1.4.1+0"
 # ╟─47bba161-0a09-4e6a-bb21-b01d142be985
 # ╠═a041ae3d-d8c8-4f84-8604-def44dbbbe83
 # ╟─dd8ac167-1416-427c-b87d-0522c61d0cd9
-# ╠═3c627000-8f24-4ca0-a597-e94b00ea745a
+# ╟─3c627000-8f24-4ca0-a597-e94b00ea745a
 # ╟─c6c6f1fd-33a2-4645-933b-e2267286e070
 # ╟─169daaaf-666a-4cdd-b934-1f59754f530c
 # ╟─9d3177b2-fc16-4fad-988b-ba6a701361ee
@@ -2232,7 +2256,7 @@ version = "1.4.1+0"
 # ╠═567a9461-93ad-4794-baf6-5c19af8bff7d
 # ╟─e4e56ef2-7749-4f58-8949-d367aa3733de
 # ╠═4337c5bd-82e2-401c-aedb-a5c054b1a32f
-# ╠═082e3921-a028-4bb7-833b-609862a36792
+# ╟─082e3921-a028-4bb7-833b-609862a36792
 # ╠═592c3164-ca43-4cd7-89c0-41c6ab226c22
 # ╠═a7c13fa5-a8eb-455b-9171-20008edb58bf
 # ╠═1ca4ee45-708b-4d46-a9be-501778a1cffa
@@ -2247,8 +2271,8 @@ version = "1.4.1+0"
 # ╠═dfd560bd-f524-4f0e-b807-e26a127822a9
 # ╠═92238d33-94ef-475c-945a-93c1b9e9b609
 # ╟─1e1dc246-3f5b-4d72-bf34-16e891352637
-# ╠═f0a33237-28fb-40c2-9d2a-841af78b9bc2
-# ╠═5f97a23f-9472-4911-9d50-1a04b657be58
+# ╟─f0a33237-28fb-40c2-9d2a-841af78b9bc2
+# ╟─5f97a23f-9472-4911-9d50-1a04b657be58
 # ╟─18cfb93c-d9bc-4bd9-9568-7e5a0c217049
 # ╠═c94c6293-77f5-444b-a40f-bbb6778e5ecd
 # ╟─8e8cec7e-2d1d-48af-a460-dca49fd8b017
@@ -2277,7 +2301,7 @@ version = "1.4.1+0"
 # ╠═d1dee3bc-7120-49ca-86ba-1c155847941b
 # ╠═3ae669e1-16ee-49d7-81b5-42124ee8bac7
 # ╠═f887d0d0-d297-46f6-8a42-adfdac36e2d3
-# ╠═a7cbde10-d746-412a-a91a-58ec9edaadc1
+# ╟─a7cbde10-d746-412a-a91a-58ec9edaadc1
 # ╠═59010b93-03d7-4fe7-9bf6-741d320ee0ff
 # ╟─25825628-463e-4449-97be-94e1608e1476
 # ╠═19c1f3ee-44b7-48c3-815c-13acf02d6a92
@@ -2288,22 +2312,21 @@ version = "1.4.1+0"
 # ╠═965303a0-06ac-49e5-9d3f-83e4a9faa861
 # ╠═bb09628d-86cb-40bd-acc1-4feb5a459edf
 # ╠═6114da78-c5fb-466d-a588-222e4cd90037
-# ╠═e86b60b2-7351-4915-842c-7e83557122d2
+# ╟─e86b60b2-7351-4915-842c-7e83557122d2
 # ╠═36b23d05-5fce-498c-a86d-b31e2357bd3b
 # ╠═34a289ab-adeb-460a-8c9e-e29b78e3b431
 # ╠═ed0edb59-e229-4cda-8ba1-b54a8496cc08
 # ╟─70455ed2-64c3-40dc-8b7b-ed1c63d2af14
 # ╟─a2e4f62d-7e13-4394-8287-5a4a935f6edd
 # ╠═96438c0c-3b71-4a5e-8181-40fa55e3740b
-# ╠═146adf5b-b7d4-456d-9b4f-fe20b1b67aed
+# ╟─146adf5b-b7d4-456d-9b4f-fe20b1b67aed
+# ╠═2c4d4c59-cd0f-4d70-94b4-7778adeab464
 # ╟─f305afb6-f1b3-4e0d-a3fa-73105bf74c06
 # ╠═0195cfaf-a280-416f-a070-65b3ab2e3de1
 # ╟─60ef6c38-3776-4ed2-a5ee-b86b9532764a
-# ╠═e06e6464-edf7-46c2-b9fb-da9dc7541f7c
+# ╠═9c1eced5-e58e-4078-87e9-184e2a510887
 # ╠═fb84469e-2168-41fa-8f34-58ff138995be
 # ╠═5638670c-017f-41b8-a24a-63762eb0ac32
 # ╠═ee7bee2c-44be-4fbd-8b40-54ccf6146f88
-# ╠═823b75c4-a082-414e-bc29-8aec0622c788
-# ╠═8ab852c8-6913-441e-a021-2f6b7e3347d2
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
