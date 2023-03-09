@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.19
+# v0.19.22
 
 using Markdown
 using InteractiveUtils
@@ -11,7 +11,16 @@ begin
 end
 
 # ╔═╡ 04a92291-495b-4e08-b69a-2ea37fd5cfd6
-md"""# Random Forest (RF) Classification using MARIDA dataset
+md"""# Random Forest Classification using [MARIDA dataset](https://marine-debris.github.io)
+
+The data has been preprocessed for use in this notebook. 
+	
+In `path0` (see below) the notebook expects the following content.
+
+```
+551M	Bands_Indices-S2
+ 57M	Train_Test-Datasets
+```
 
 Developed by Emanuel Castanho (AIR Centre).
 """
@@ -24,7 +33,7 @@ md"""Your **data** folder needs to be shared with your computer, you need to ins
 
 # ╔═╡ 374e09d8-80cf-4ec2-a2e7-5f9b82928885
 # Change if needed
-path0 = "/home/jovyan/data"
+path0 = joinpath(tempdir(),"MARIDA_dataset")
 
 # ╔═╡ c3c58a38-2fec-45de-a496-f6a79cd68680
 TableOfContents()
@@ -388,7 +397,7 @@ PlutoUI = "~0.7.49"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.3"
+julia_version = "1.8.5"
 manifest_format = "2.0"
 project_hash = "a4d2d8dc7875790d007db8047361e430259424f3"
 
@@ -523,7 +532,7 @@ version = "4.5.0"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "0.5.2+0"
+version = "1.0.1+0"
 
 [[deps.ComputationalResources]]
 git-tree-sha1 = "52cb3ec90e8a8bea0e62e275ba577ad0f74821f7"
@@ -706,9 +715,9 @@ version = "1.0.0"
 
 [[deps.Ghostscript_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "78e2c69783c9753a91cdae88a8d432be85a2ab5e"
+git-tree-sha1 = "43ba3d3c82c18d88471cfd2924931658838c9d8f"
 uuid = "61579ee1-b43e-5ca0-a5da-69d92c66a64b"
-version = "9.55.0+0"
+version = "9.55.0+4"
 
 [[deps.Graphics]]
 deps = ["Colors", "LinearAlgebra", "NaNMath"]
