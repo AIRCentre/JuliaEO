@@ -22,12 +22,12 @@ begin
 end
 
 # ╔═╡ 4b0b7995-4109-4582-8520-cf45486e0612
-md"# Land cover classification of tiff files with Rasters.jl and Flux.jl"
+md"# Land cover classification of TIFF files with Rasters.jl and Flux.jl"
 
 # ╔═╡ 6a919b4c-100b-4322-8d7a-58fd6aa3e58e
-md"Here we use an image data set to train a convolutional neural network (CNN).
+md"Let's use an image data set to train a convolutional neural network (CNN).
 
-The dataset is made up of thousand of 64*64 images that have been classified according to the type of land cover they contain.
+The [EuroSAT](https://github.com/phelber/EuroSAT) dataset is made of thousand of 64*64 images that have been classified according to the type of land cover they contain.
 
 @article{helber2019eurosat,
   title={Eurosat: A novel dataset and deep learning benchmark for land use and land cover classification},
@@ -61,9 +61,9 @@ begin
 	doTraining_bind = @bind doTraining PlutoUI.Select(0:2, default=1)
 	md"""The more we train the model the better it should get. But the longer it will take to train. 
 	
-	We suggest you try level 1 (default) before level 2. As an exercise, try to improve convergence. Sometimes increase the number of training data or the number of selected bands helps. 
+	We suggest you try level 1 (default) before level 2. As an exercise, try to improve convergence. Sometimes more training data or more selected bands may help. 
 	
-	training level : $(doTraining_bind)
+	Training level : $(doTraining_bind)
 	"""
 end
 
