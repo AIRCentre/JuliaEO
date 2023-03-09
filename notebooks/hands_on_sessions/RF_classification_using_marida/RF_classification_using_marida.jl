@@ -18,8 +18,8 @@ The data has been preprocessed for use in this notebook.
 In `path0` (see below) the notebook expects the following content.
 
 ```
-551M	Bands_Indices-S2
- 57M	Train_Test-Datasets
+551M	Inputs/Bands_Indices-S2
+ 57M	Inputs/Train_Test-Datasets
 ```
 
 Developed by Emanuel Castanho (AIR Centre).
@@ -29,7 +29,11 @@ Developed by Emanuel Castanho (AIR Centre).
 md"""## Before running"""
 
 # ╔═╡ e475e0c8-89ac-4309-81ca-5422c3d48629
-md"""Your **data** folder needs to be shared with your computer, you need to insert there the **Inputs** folder that contains a folder with **Bands_Indices-S2** (.tif files) and a folder with **Train_Test-Datasets** (.csv files)."""
+md"""The **Inputs** folder that contains a folder with **Bands_Indices-S2** (.tif files) and a folder with **Train_Test-Datasets** (.csv files).
+
+!!! note
+    At the 2023 workshop, this was in `/home/jovyan/data` which was shared with the Docker container. Later on, the default location was changed to `joinpath(tempdir(),"MARIDA_dataset")` to be more general.
+"""
 
 # ╔═╡ 374e09d8-80cf-4ec2-a2e7-5f9b82928885
 # Change if needed
