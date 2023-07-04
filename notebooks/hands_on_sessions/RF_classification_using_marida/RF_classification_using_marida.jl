@@ -53,10 +53,10 @@ if !isfile(Train_file)
 	fil=joinpath(tempdir(),"MARIDA_JuliaEO_subset.tar")
 	
 	Downloads.download(url,fil*".gz")
-	run(`gunzip $fil`)
+	run(`gunzip $(fil).gz`)
 	
 	!isdir(path0) ? mkdir(path0) : nothing
-	run(`tar xf $fil2 --directory $path0`)
+	run(`tar xf $fil --directory $path0`)
 end
 
 # ╔═╡ be824eda-227f-4b42-a3aa-06e8992b55a5
