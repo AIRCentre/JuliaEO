@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.19
+# v0.19.26
 
 using Markdown
 using InteractiveUtils
@@ -7,24 +7,61 @@ using InteractiveUtils
 # ╔═╡ 73adbbfe-f5a7-42e4-9d09-ab8fcb830bf7
 begin
 	using PlutoUI
-	import DataFrames, CSV, DecisionTree, ArchGDAL, BenchmarkTools, Images
+	import Downloads, DataFrames, CSV
+	import DecisionTree, ArchGDAL, BenchmarkTools, Images
 end
 
 # ╔═╡ 04a92291-495b-4e08-b69a-2ea37fd5cfd6
-md"""# Random Forest (RF) Classification using MARIDA dataset
+md"""# Random Forest Classification using [MARIDA dataset](https://marine-debris.github.io)
 
-Developed by Emanuel Castanho (AIR Centre).
+Developed by _Emanuel Castanho (AIR Centre)_.
+
+MARIDA reference : _Kikaki K, Kakogeorgiou I, Mikeli P, Raitsos DE, Karantzalos K (2022) MARIDA: A benchmark for Marine Debris detection from Sentinel-2 remote sensing data. PLoS ONE 17(1): e0262247. https://doi.org/10.1371/journal.pone.0262247_
 """
 
 # ╔═╡ 6e9e54f8-0e00-4651-a78a-d0b1a2ededdb
 md"""## Before running"""
 
 # ╔═╡ e475e0c8-89ac-4309-81ca-5422c3d48629
-md"""Your **data** folder needs to be shared with your computer, you need to insert there the **Inputs** folder that contains a folder with **Bands_Indices-S2** (.tif files) and a folder with **Train_Test-Datasets** (.csv files)."""
+md"""The data folder (`path0`, defined below) contains a subfolder with `.tif` files and the training/testing tables (`.csv` files). The notebook expects to find the following content in `path0`.
+
+```
+552M    MARIDA_Bands_Indices
+4.0K    MARIDA_readme.txt
+15M     MARIDA_Test.csv
+43M     MARIDA_Train.csv
+```
+
+The MARIDA data has been preprocessed for use in this notebook. 
+
+!!! note
+    At the 2023 workshop, this was in `/home/jovyan/data` which was shared with the Docker container. Later on, the default location was changed to `joinpath(tempdir(),"MARIDA_JuliaEO_subset")` to be more general.
+"""
 
 # ╔═╡ 374e09d8-80cf-4ec2-a2e7-5f9b82928885
-# Change if needed
-path0 = "/home/jovyan/data"
+begin
+	# Change if needed
+	path0 = joinpath(tempdir(),"MARIDA_JuliaEO_subset")
+	Train_file = joinpath(path0,"MARIDA_Train.csv")
+	Test_file = joinpath(path0,"MARIDA_Test.csv")
+	Bands_path = joinpath(path0,"MARIDA_Bands_Indices")
+end
+
+# ╔═╡ 6988ba54-ca52-4400-bfde-4ba9d844515f
+if !isfile(Train_file)
+	url="https://zenodo.org/record/8113073/files/MARIDA_JuliaEO_subset.tar.gz?download=1"
+	fil=joinpath(tempdir(),"MARIDA_JuliaEO_subset.tar")
+	
+	Downloads.download(url,fil*".gz")
+	run(`gunzip $(fil).gz`)
+	
+	!isdir(path0) ? mkdir(path0) : nothing
+	run(`tar xf $fil --directory $path0`)
+end
+
+# ╔═╡ be824eda-227f-4b42-a3aa-06e8992b55a5
+# Needs to print: Test.csv and Train.csv
+readdir(path0)
 
 # ╔═╡ c3c58a38-2fec-45de-a496-f6a79cd68680
 TableOfContents()
@@ -33,29 +70,22 @@ TableOfContents()
 md"""## Read train/test data"""
 
 # ╔═╡ 772f9644-8a4b-11ed-23c9-f338576240ef
-begin
-	# Folder where Train and Test datasets are saved
-	DatasetsFolder = joinpath(path0,"Inputs/Train_Test-Datasets")
-	
+begin	
 	# Folder where the results will be saved
 	ResultsFolder = joinpath(path0,"Results")
 	!isdir(ResultsFolder) ? mkdir(ResultsFolder) : nothing
 
 	# Folder where the bands and indices are located (pre-processed by other script)
-	BandsAndIndicesFolder = joinpath(path0,"Inputs/Bands_Indices-S2")
+	BandsAndIndicesFolder = Bands_path
 
-	# Train 
-	DF_Train = DataFrames.DataFrame(CSV.File(joinpath(DatasetsFolder,"Train.csv")))
+	# Train (pre-processed by other script)
+	DF_Train = DataFrames.DataFrame(CSV.File(Train_file))
 
-	# Test 
-	DF_Test = DataFrames.DataFrame(CSV.File(joinpath(DatasetsFolder,"Test.csv")))
+	# Test (pre-processed by other script)
+	DF_Test = DataFrames.DataFrame(CSV.File(Test_file))
 
 	last(DF_Test,5)
 end
-
-# ╔═╡ be824eda-227f-4b42-a3aa-06e8992b55a5
-# Needs to print: Test.csv and Train.csv
-readdir(DatasetsFolder)
 
 # ╔═╡ 01bd3854-63a4-4192-b8e3-9ef437ed08db
 md"""## Prepare train and test data"""
@@ -371,6 +401,7 @@ BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 DecisionTree = "7806a523-6efd-50cb-b5f6-3fa6f1930dbb"
+Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
@@ -388,9 +419,9 @@ PlutoUI = "~0.7.49"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.3"
+julia_version = "1.9.1"
 manifest_format = "2.0"
-project_hash = "a4d2d8dc7875790d007db8047361e430259424f3"
+project_hash = "5f6ac7471197f9fa9bbf5ed1509f02c624f1eb59"
 
 [[deps.AbstractFFTs]]
 deps = ["ChainRulesCore", "LinearAlgebra"]
@@ -523,7 +554,7 @@ version = "4.5.0"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "0.5.2+0"
+version = "1.0.2+0"
 
 [[deps.ComputationalResources]]
 git-tree-sha1 = "52cb3ec90e8a8bea0e62e275ba577ad0f74821f7"
@@ -580,7 +611,9 @@ version = "0.12.1"
 
 [[deps.DelimitedFiles]]
 deps = ["Mmap"]
+git-tree-sha1 = "9e2f36d3c96a820c678f2f1f1782582fcf685bae"
 uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+version = "1.9.1"
 
 [[deps.DiskArrays]]
 deps = ["OffsetArrays"]
@@ -706,9 +739,9 @@ version = "1.0.0"
 
 [[deps.Ghostscript_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "78e2c69783c9753a91cdae88a8d432be85a2ab5e"
+git-tree-sha1 = "43ba3d3c82c18d88471cfd2924931658838c9d8f"
 uuid = "61579ee1-b43e-5ca0-a5da-69d92c66a64b"
-version = "9.55.0+0"
+version = "9.55.0+4"
 
 [[deps.Graphics]]
 deps = ["Colors", "LinearAlgebra", "NaNMath"]
@@ -795,7 +828,7 @@ uuid = "6218d12a-5da1-5696-b52f-db25d2ecc6d1"
 version = "1.2.1"
 
 [[deps.ImageMagick_jll]]
-deps = ["Artifacts", "Ghostscript_jll", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Libtiff_jll", "Pkg", "Zlib_jll", "libpng_jll"]
+deps = ["Artifacts", "Ghostscript_jll", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Libtiff_jll", "OpenJpeg_jll", "Pkg", "Zlib_jll", "libpng_jll"]
 git-tree-sha1 = "124626988534986113cfd876e3093e4a03890f58"
 uuid = "c73af94c-d91f-53ed-93a7-00f77d67a9d7"
 version = "6.9.12+3"
@@ -1015,7 +1048,7 @@ uuid = "89763e89-9b03-5906-acba-b20f662cd828"
 version = "4.4.0+0"
 
 [[deps.LinearAlgebra]]
-deps = ["Libdl", "libblastrampoline_jll"]
+deps = ["Libdl", "OpenBLAS_jll", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.LittleCMS_jll]]
@@ -1062,7 +1095,7 @@ uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
 [[deps.MbedTLS_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
-version = "2.28.0+0"
+version = "2.28.2+0"
 
 [[deps.MetaGraphs]]
 deps = ["Graphs", "JLD2", "Random"]
@@ -1087,7 +1120,7 @@ version = "0.3.4"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
-version = "2022.2.1"
+version = "2022.10.11"
 
 [[deps.NaNMath]]
 deps = ["OpenLibm_jll"]
@@ -1126,7 +1159,7 @@ version = "1.12.8"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
-version = "0.3.20+0"
+version = "0.3.21+4"
 
 [[deps.OpenEXR]]
 deps = ["Colors", "FileIO", "OpenEXR_jll"]
@@ -1199,9 +1232,9 @@ uuid = "69de0a69-1ddd-5017-9359-2bf0b02dc9f0"
 version = "2.5.2"
 
 [[deps.Pkg]]
-deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
+deps = ["Artifacts", "Dates", "Downloads", "FileWatching", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
-version = "1.8.0"
+version = "1.9.0"
 
 [[deps.PkgVersion]]
 deps = ["Pkg"]
@@ -1375,7 +1408,7 @@ uuid = "a2af1166-a08f-5f64-846c-94a0d3cef48c"
 version = "1.1.0"
 
 [[deps.SparseArrays]]
-deps = ["LinearAlgebra", "Random"]
+deps = ["Libdl", "LinearAlgebra", "Random", "Serialization", "SuiteSparse_jll"]
 uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 
 [[deps.SpecialFunctions]]
@@ -1404,6 +1437,7 @@ version = "1.4.0"
 [[deps.Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
 uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+version = "1.9.0"
 
 [[deps.StatsAPI]]
 deps = ["LinearAlgebra"]
@@ -1422,10 +1456,15 @@ git-tree-sha1 = "46da2434b41f41ac3594ee9816ce5541c6096123"
 uuid = "892a3eda-7b42-436c-8928-eab12a02cf0e"
 version = "0.3.0"
 
+[[deps.SuiteSparse_jll]]
+deps = ["Artifacts", "Libdl", "Pkg", "libblastrampoline_jll"]
+uuid = "bea87d4a-7f5b-5778-9afe-8cc45184846c"
+version = "5.10.1+6"
+
 [[deps.TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
-version = "1.0.0"
+version = "1.0.3"
 
 [[deps.TableTraits]]
 deps = ["IteratorInterfaceExtensions"]
@@ -1442,7 +1481,7 @@ version = "1.10.0"
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
-version = "1.10.1"
+version = "1.10.0"
 
 [[deps.TensorCore]]
 deps = ["LinearAlgebra"]
@@ -1520,7 +1559,7 @@ version = "2.10.3+0"
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
-version = "1.2.12+3"
+version = "1.2.13+0"
 
 [[deps.Zstd_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1529,9 +1568,9 @@ uuid = "3161d3a3-bdf6-5164-811a-617609db77b4"
 version = "1.5.2+0"
 
 [[deps.libblastrampoline_jll]]
-deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
+deps = ["Artifacts", "Libdl"]
 uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
-version = "5.1.1+0"
+version = "5.8.0+0"
 
 [[deps.libgeotiff_jll]]
 deps = ["Artifacts", "JLLWrappers", "LibCURL_jll", "Libdl", "Libtiff_jll", "PROJ_jll", "Pkg"]
@@ -1567,9 +1606,10 @@ version = "17.4.0+0"
 # ╟─6e9e54f8-0e00-4651-a78a-d0b1a2ededdb
 # ╟─e475e0c8-89ac-4309-81ca-5422c3d48629
 # ╠═374e09d8-80cf-4ec2-a2e7-5f9b82928885
+# ╠═6988ba54-ca52-4400-bfde-4ba9d844515f
+# ╠═be824eda-227f-4b42-a3aa-06e8992b55a5
 # ╟─c3c58a38-2fec-45de-a496-f6a79cd68680
 # ╟─7f4ba61d-5007-4696-9562-c69fc17d542c
-# ╠═be824eda-227f-4b42-a3aa-06e8992b55a5
 # ╠═772f9644-8a4b-11ed-23c9-f338576240ef
 # ╟─01bd3854-63a4-4192-b8e3-9ef437ed08db
 # ╠═d270fc91-c1c4-4be6-9d43-79b957f0718a
@@ -1592,9 +1632,9 @@ version = "17.4.0+0"
 # ╟─624039dd-699c-43d9-a30f-ba1aac2b8e0f
 # ╟─f5f96f1b-8534-46bd-b85d-50e3d7bdb31f
 # ╠═73adbbfe-f5a7-42e4-9d09-ab8fcb830bf7
-# ╠═972f265c-e441-484a-93d6-5a3e1be94c8f
-# ╠═30c05ae0-0618-4334-902c-a52aac3da2e7
-# ╠═1df6ce42-d5c5-4aa4-af49-9dd14f9eb215
-# ╠═2abe5a7e-b244-4f94-9946-39ba85722db5
+# ╟─972f265c-e441-484a-93d6-5a3e1be94c8f
+# ╟─30c05ae0-0618-4334-902c-a52aac3da2e7
+# ╟─1df6ce42-d5c5-4aa4-af49-9dd14f9eb215
+# ╟─2abe5a7e-b244-4f94-9946-39ba85722db5
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
