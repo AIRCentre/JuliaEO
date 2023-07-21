@@ -87,6 +87,14 @@ This is not necessarily a complete or up-to-date list. It notably omits notebook
 - `hands_on_sessions/Julia_for_beginners/Manifest.toml`
 - `hands_on_sessions/Julia_for_beginners/Project.toml`
 
+## Links to the YouTube videos 
+
+[Julia for Beginners L. Alonso & S. Danisch](https://www.youtube.com/watch?v=5vvMRETv9fA&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=15)
+[Datacubes for High Resolution EO Data F. Cremer](https://www.youtube.com/watch?v=XuZGBmCYYSU&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=14)
+[Data Visualizations with Makie.jl L. Alonso & S. Danisch](https://www.youtube.com/watch?v=ocXFwzWnaM8&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=13)
+[Data Science, Big Data, and Cloud Native Solutions F. Gans & M. Klöwer](https://www.youtube.com/watch?v=oMxu_r1uqKY&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=12)
+[Advanced Geodata Science & Geostatistical Learning J. Hoffimann](https://www.youtube.com/watch?v=9dO941FSUd8&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=11)
+
 </p>
 </details>
 
