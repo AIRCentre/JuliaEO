@@ -94,6 +94,21 @@ This is not necessarily a complete or up-to-date list. It notably omits notebook
 - [Data Visualizations with Makie.jl L. Alonso & S. Danisch](https://www.youtube.com/watch?v=ocXFwzWnaM8&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=13)
 - [Data Science, Big Data, and Cloud Native Solutions F. Gans & M. Klöwer](https://www.youtube.com/watch?v=oMxu_r1uqKY&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=12)
 - [Advanced Geodata Science & Geostatistical Learning J. Hoffimann](https://www.youtube.com/watch?v=9dO941FSUd8&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=11)
+- [Julia Showcases in Oceanography A. Barth & G. Forget](https://www.youtube.com/watch?v=zaWGrzp1aY8&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=16)
+- [Land Cover Classification of Earth Observation Images R. Schouten](https://www.youtube.com/watch?v=uGqlap_kl-g&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=17)
+- [Machine Learning with Geospatial Data, What Can Go Wrong J. Hoffimann](https://www.youtube.com/watch?v=_iIOqZNoMw4&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=18)
+- [MBON, Ocean Biomes Monitoring, and Marine Ecosystem Modeling F. Muller Karger, A. Lima & G. Forget](https://www.youtube.com/watch?v=oz8Un-eLmWo&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=19)
+- [Raster Data Reading, Manipulating, and Visualising R. Schouten](https://www.youtube.com/watch?v=NJbd2tYnLr8&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=20)
+- [Julia Use Case for Change Detection F. Cremer](https://www.youtube.com/watch?v=kCBbvt8NEjo&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=21)
+- [Regional Ocean Data G. Forget, A. Valente & E. Castanho](https://www.youtube.com/watch?v=Xf0tHBqhx7o&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=22)
+- [Processing LiDAR elevation point clouds using vector data in Julia M. Pronk](https://www.youtube.com/watch?v=AW0gQdnUaxc&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=23)
+- [Retrieving Satellite and Reanalysis Data from EO Servers N. Wong & A. Barth](https://www.youtube.com/watch?v=41QnwHyRmDg&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=24)
+- [SAR Data Manipulation F. Cremer](https://www.youtube.com/watch?v=OvQ9ZyZ43TM&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=25)
+- [SARProcessing jl: Background and Method S. Lupemba & E. Lippert](https://www.youtube.com/watch?v=AcbEtkvcyTg&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=26)
+- [SARProcessing jl: Vision, State of Affairs, and Roadmap E Lippert, S Lupemba, K. Sorensen](https://www.youtube.com/watch?v=yVk8AzPd4OU&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=27)
+- [Simulating Oceanic Pathways of Plastics, Pollutants, or Marine Ecosystems G. Forget](https://www.youtube.com/watch?v=XG3KdoOGA3s&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=28)
+- [The Power of JuliaGeo M. Visser](https://www.youtube.com/watch?v=FDry8ly36o4&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=29)
+
 
 </p>
 </details>
