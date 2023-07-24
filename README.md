@@ -105,10 +105,10 @@ This is not necessarily a complete or up-to-date list. It notably omits notebook
 - [Retrieving Satellite and Reanalysis Data from EO Servers N. Wong & A. Barth](https://www.youtube.com/watch?v=41QnwHyRmDg&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=24)
 - [SAR Data Manipulation F. Cremer](https://www.youtube.com/watch?v=OvQ9ZyZ43TM&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=25)
 - [SARProcessing jl: Background and Method S. Lupemba & E. Lippert](https://www.youtube.com/watch?v=AcbEtkvcyTg&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=26)
-- [SARProcessing jl: Vision, State of Affairs, and Roadmap E Lippert, S Lupemba, K. Sorensen](https://www.youtube.com/watch?v=yVk8AzPd4OU&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=27)
+- [SARProcessing jl: Vision, State of Affairs, and Roadmap E. Lippert, S. Lupemba, K. Sorensen, & I. Szczesniak](https://www.youtube.com/watch?v=yVk8AzPd4OU&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=27)
 - [Simulating Oceanic Pathways of Plastics, Pollutants, or Marine Ecosystems G. Forget](https://www.youtube.com/watch?v=XG3KdoOGA3s&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=28)
 - [The Power of JuliaGeo M. Visser](https://www.youtube.com/watch?v=FDry8ly36o4&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=29)
-
+- [Working with SAR and InSAR Data K. Sorensen & S. Lupemba](https://www.youtube.com/watch?v=_XDOqOuz1Z0&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=30)
 
 </p>
 </details>
