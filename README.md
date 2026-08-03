@@ -20,6 +20,10 @@ You should be able to run most notebooks outside a Docker container. In case you
 
 This is not necessarily a complete or up-to-date list. It notably omits notebooks used from the [JuliaClimate notebook stack](https://github.com/JuliaClimate/Notebooks#readme). 
 
+### YouTube videos
+YouTube video tutorials for each session can be found [here](https://www.youtube.com/watch?v=daNrJhPPgWg&list=PL-3G0PUXakeY_XdNYhcJgsrnaO9-hL54z&index=1).
+
+
 1. Plenary sessions
 
 - `plenary_sessions/The_Power_of_JuliaGeo/juliageo.ipynb`
