@@ -1,0 +1,4 @@
+
+
+# macOS leaves these in img/ and favicon/
+.DS_Store
